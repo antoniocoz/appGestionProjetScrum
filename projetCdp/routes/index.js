@@ -41,13 +41,21 @@ router.param('backlog', function(req, res, next, id) {
 });
 
 //get one backlog with associated US
-router.get('/backlogs/:backlog', function(req, res) {
-  //Using the populate() method, we can automatically load all the USs associated with a particular backlog
-  req.backlog.populate('userStories', function(err, backlog) {
-    if (err) { return next(err); }
+router.get('/userStories/:backlog', function(req, res) {
+    var query = {"backlog": req.backlog._id};
+    US.find(query, function(err, doc) {
+      if (err) { return next(err); }
+        res.json(doc);
+    });
+});
 
-    res.json(backlog);
-  });
+//get one backlog with associated US
+router.get('/backlogs/:backlog', function(req, res) {
+    var query = {"_id": req.backlog._id};
+    Backlog.findOne(query, function(err, doc) {
+      if (err) { return next(err); }
+        res.json(doc);
+    });
 });
 
 //update one backlog with associated US
@@ -57,16 +65,48 @@ router.put('/backlogs/:backlog', function(req, res) {
   
   var query = {"_id":req.backlog._id};
   Backlog.findOneAndUpdate(query, {title: title, description: description}, { 'new': true }, function(doc) {
-		res.json(doc);	
+		res.json(doc);
+  });
+});
+
+//add a new US for one backlog
+router.post('/userStories/:backlog', function(req, res, next) {
+  var us = new US(req.body);
+  us.backlog = req.backlog;
+
+  us.save(function(err, us){
+    if(err){ return next(err); }
+    res.json(us);
   });
 });
 
 //delete one backlog with associated US
 router.delete('/backlogs/:backlog', function(req, res) {
-  req.backlog.remove({_id: req.body._id}, function(err, doc) {
+  Backlog.remove({_id: req.params.backlog}, function(err, doc) {
     if (err) { return next(err); }
       res.json(doc);
     });
+});
+
+//delete one US of one backlog
+router.delete('/userStories/:userStory', function(req, res) {
+	US.remove({_id: req.params.userStory}, function(err, doc) {
+    if (err) { return next(err); }
+      res.json(doc);
+    });
+});
+
+//update one US
+router.put('/userStories/:userStory', function(req, res) {
+  var body = req.body.body;
+  var priority = req.body.priority;
+  var difficulty = req.body.difficulty;
+  
+  var query = {"_id":req.params.userStory};
+
+      US.findOneAndUpdate(query, {body: body, priority: priority, difficulty: difficulty}, { 'new': true }, function(doc) {
+        res.json(doc);  
+      });
 });
 
 module.exports = router;

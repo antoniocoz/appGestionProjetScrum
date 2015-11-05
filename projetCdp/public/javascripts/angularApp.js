@@ -1,13 +1,12 @@
 //Dependencies
 var app = angular.module('backlogs', ['ui.router']);
 
-//Setup states
+//Setup a state called home
 app.config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
 
-  //Setup a state called home
   $stateProvider
     .state('home', {
       url: '/home',
@@ -20,9 +19,40 @@ function($stateProvider, $urlRouterProvider) {
 		}]
 	  }
     })
+	.state('userStories', {
+	  url: '/userStories/{id}',
+	  templateUrl: '/userStories.html',
+	  controller: 'USCtrl',
+	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
+	  resolve: {
+		userStoriesPromise: ['$stateParams', 'userStories', function($stateParams, userStories) {
+			console.log($stateParams.id);
+		  return userStories.getAll($stateParams.id);
+		}]
+	  }
+	});
 
   // redirect unspecified routes
   $urlRouterProvider.otherwise('home');
+}]);
+
+
+app.factory('userStories', ['$http', function($http){
+  var o = {userStories: []};
+
+  o.getAll = function(idBL) {
+    return $http.get('/userStories/' + idBL).success(function(data){
+      angular.copy(data, o.userStories);
+    });
+  };
+
+  o.deleteUS = function(id, idBL) {
+	  return $http.delete('/userStories/' + id).success(function(response){
+		o.getAll(idBL);
+	  });
+	};
+ 
+  return o;
 }]);
 
 //Service
@@ -57,7 +87,7 @@ app.factory('backlogs', ['$http', function($http){
 	  });
 	};
 	
-  //update one backlog
+  //update a backlog
   o.updateBL = function(id, backlog) {
 	  return $http.put('/backlogs/' + id, backlog).success(function(response){
 		o.getAll();
@@ -79,7 +109,6 @@ function($scope, backlogs){
   };
   
   $scope.editBacklog = function(backlog){
-		console.log(backlog._id);
           $scope.title = backlog.title;
           $scope.description = backlog.description;
 		  $scope.id = backlog._id;
@@ -110,9 +139,59 @@ function($scope, backlogs){
 //US controller
 app.controller('USCtrl', [
 '$scope',
-'backlogs',
-'backlog',
-function($scope, backlogs, backlog){
-	$scope.backlog = backlog;
-
+'userStories',
+function($scope, userStories){
+	//On récupère l'ensemble des US via getAll du service
+	$scope.userStories = userStories.userStories;
+	
+	$scope.addUserStory = function(){
+	  if($scope.body === '' || !$scope.priority || !$scope.difficulty) { return; }
+	  backlogs.createUS(backlog._id, {
+		body: $scope.body,
+		priority: $scope.priority,
+		difficulty: $scope.difficulty
+	  }).success(function(us) {
+		$scope.backlog.userStories.push(us);
+	  });
+	  $scope.body = '';
+	  $scope.priority = '';
+	  $scope.difficulty = '';
+	};
+	
+	$scope.deleteUserStory = function(id, idBL){
+		userStories.deleteUS(id, idBL);
+		/*var index;
+		var property = "_id";
+		
+		var c, found=false;
+		for(c in $scope.userStories) {
+			if($scope.userStories[c][property] == id) {
+				found=true;
+				index = c;
+				break;
+			}
+		}
+		
+		$scope.userStories.splice(index, 1);*/
+	};
+	
+	$scope.editUserStory = function(userStory){
+          $scope.body = userStory.body;
+          $scope.priority = userStory.priority;
+		  $scope.difficulty = userStory.difficulty;
+		  $scope.id = userStory._id;
+	};
+	
+	$scope.updateUserStory = function(idBL, idUS){
+		if($scope.body === '' || !$scope.priority || !$scope.difficulty) { return; }
+		backlogs.updateUS(idBL, $scope.id, {
+			body: $scope.body, 
+			priority: $scope.priority,
+			difficulty: $scope.difficulty
+		});
+		$scope.body='';
+		$scope.priority='';
+		$scope.difficulty='';
+		$scope.backlog.userStories
+	};
 }]);

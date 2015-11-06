@@ -19,7 +19,7 @@ describe("Backlog", function() {
 
     describe("update", function () {
          it("should update a backlog", function(){
-            element.all(by.css('button.btn.btn-warning')).last().click();
+            $$('button.btn-warning').last().click();
             element(by.model('title')).clear().sendKeys("Test Update, impossible que le nom d\'un titre soit ça xrtrz");
             element(by.model('description')).clear().sendKeys("Test Update");
             element(by.id('BtnEditBacklog')).click();
@@ -28,10 +28,19 @@ describe("Backlog", function() {
             expect(element.all(by.model('descriptionBL')).last().getText()).toEqual('Test Update'); 
         });
     });
+    
+    describe("details", function () {
+        it("should shows backlog's details", function(){
+            var url = $$('a.testDetail').last().getAttribute("href")
+            $$('button.btn-test').last().click();
+            expect(browser.getCurrentUrl()).toBe(url);           
+        });
+    });
 
     describe("delete", function (){
         it("should delete a backlog", function(){
-            element.all(by.css('button.btn.btn-danger')).last().click();
+            browser.get('/#/home');
+            $$('button.btn-danger').last().click();
             expect(element.all(by.model('titleBL')).last().getText()).not.toEqual('Test Update, impossible que le nom d\'un titre soit ça xrtrz');
         });
     });

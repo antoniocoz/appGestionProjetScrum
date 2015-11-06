@@ -27,7 +27,7 @@
 			<p ng-model="descriptionBL">{{backlog.description}}</p>
 			
 			<span>
-			  <a href="#/userStories/{{backlog._id}}">	<button class="btn btn-primary">Details</button></a>   
+			  <a class="testDetail" href="#/userStories/{{backlog._id}}">	<button class="btn btn-primary btn-test">Details</button></a>   
 			  <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>  
 			  <button class="btn btn-warning" ng-click="editBacklog(backlog)">Modifier</button>
 			</span>

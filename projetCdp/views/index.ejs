@@ -13,150 +13,15 @@
 		</div>
 	</div>
 	
-    <section ng-view></section>
-<!--
-	<script type="text/ng-template" id="/home.html">
-	
-	  <div class="page-header">
-		<h2>Gestion des projets</h2>
-	  </div>
-	  
-	  <h3>Backlogs existants</h3>
-	  
-	  <div ng-repeat="backlog in backlogs">
-		<span style="font-size:12px; margin-left:10px;">
-			<h4 ng-model="titleBL">{{backlog.title}}</h4>
-			<p ng-model="descriptionBL">{{backlog.description}}</p>
-			
-			<span>
-			  <a class="testDetail" href="#/userStories/{{backlog._id}}">	<button class="btn btn-primary btn-test">Details</button></a>   
-			  <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>  
-			  <button class="btn btn-warning" ng-click="editBacklog(backlog)">Modifier</button>
-			</span>
-		</span>
-	  </div>
+    <section ng-view>
+    </section>
 
-			  <h3>Ajouter/Editer un backlog</h3>
-			  <div class="form-group">
-				  <input type="text"
-					class="form-control"
-					placeholder="Title"
-					ng-model="title">
-				  </input>
-			  </div>
-			  <div class="form-group">
-				  <input type="text"
-					class="form-control"
-					placeholder="Description"
-					ng-model="description">
-				  </input>
-			  </div>
-			  <div class="form-group">
-				  <input type="hidden"
-					class="form-control"
-					placeholder="Id"
-					ng-model="id">
-				  </input>
-			  </div>
-			  <button id="BtnAddBacklog" class="btn btn-primary" ng-click="addBacklog()">Ajouter</button>
-			  <button id="BtnEditBacklog" class="btn btn-info" ng-click="updateBacklog(backlog._id)">Editer</button> 
-	  
-	</script>
-	
-	<script type="text/ng-template" id="/userStories.html">
-	  <div class="page-header">		
-		
-	  </div>
-	  
-	  <nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div>
-			  <ul class="nav navbar-nav">
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#">Sprints</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
-	  
-	  <h3>Détails du backlog</h3>
-			
-	  <div class="table-responsive">
-	  <table  class="table-bordered">
-		<tr>
-			<td><span style="font-size:20px;">Description</span></td>
-			<td><span style="font-size:20px;">Priorite</span></td>
-			<td><span style="font-size:20px;">Difficulte</span></td>
-			<td><span style="font-size:20px;">Options</span></td>
-		</tr>
-		<tr ng-repeat="us in userStories">
-		<span style="font-size:20px;">
-		  <td>{{us.body}}</td>
-		  <td>{{us.priority}}</td>
-		  <td>{{us.difficulty}}</td>
-		  <td>
-		  <p>{{us._id}}</p>
-		  
-		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
-		  <button class="btn btn-warning" ng-click="editUserStory(us)">Modifier</button>
-		  
-		  </td>
-		</span>
-		</tr>
-	  </table>
-	  </div>
-	  
-		<h3>Ajouter/Editer une User Story</h3>
-
-		<div class="form-group">
-		  <input type="text"
-			  class="form-control"
-			  placeholder="Description"
-			  ng-model="body">
-		  </input>
-		  <br>
-		  <label for="sel1">Priorite:</label>
-		  <input type="text"
-			  ng-pattern="/^[0-9]+$/"
-			  class="form-control"
-			  ng-model="priority">
-		  </input>
-		  <br>
-		  <label for="sel1">Difficulte:</label>
-		  <select class="form-control" ng-model="difficulty">
-			  <option>2</option>
-			  <option>3</option>
-			  <option>5</option>
-			  <option>8</option>
-			  <option>13</option>
-			  <option>21</option>
-			</select>
-		  <div class="form-group">
-				<input type="hidden"
-					class="form-control"
-					placeholder="Id"
-					ng-model="id">
-				</input>
-		  </div>
-		</div>
-		<button class="btn btn-primary" ng-click="addUserStory()">Ajouter</button>
-		<button class="btn btn-info" ng-click="updateUserStory(backlog._id, us._id)">Editer</button> 
-	  
-	</script>
-	-->
   </body>
     
     <script type="text/javascript" src="/lib/angular/angular.min.js"></script>
 	<script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     
     <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!--
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
-	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-	-->
-
     <script src="/javascripts/backlogs/backlogs.client.module.js"></script>
     <script src="/javascripts/backlogs/controllers/backlogs.client.controller.js"></script>
     <script src="/javascripts/backlogs/services/backlogs.client.service.js"></script>
@@ -164,6 +29,5 @@
     <script src="/javascripts/userstories/controllers/userstories.client.controller.js"></script>
     <script src="/javascripts/userstories/services/userstories.client.service.js"></script>
     <script src="/javascripts/application.js"></script>
-    <!--
-    <script src="/javascripts/angularApp.js"></script> -->
+
 </html>

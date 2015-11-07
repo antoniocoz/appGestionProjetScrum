@@ -5,15 +5,15 @@ angular.module('userstories').controller('USCtrl', [
 function($scope, userStories){
 	//On récupère l'ensemble des US via getAll du service
 	$scope.userStories = userStories.userStories;
+	$scope.backlogId = userStories.getIdBl();
 	
 	$scope.addUserStory = function(){
 	  if($scope.body === '' || !$scope.priority || !$scope.difficulty) { return; }
-	  userStories.createUS(backlog._id, {
+	  userStories.createUS({
 		body: $scope.body,
 		priority: $scope.priority,
-		difficulty: $scope.difficulty
-	  }).success(function(us) {
-		$scope.backlog.userStories.push(us);
+		difficulty: $scope.difficulty,
+		backlog: $scope.backlogId
 	  });
 	  $scope.body = '';
 	  $scope.priority = '';
@@ -22,31 +22,19 @@ function($scope, userStories){
 	
 	$scope.deleteUserStory = function(id, idBL){
 		userStories.deleteUS(id, idBL);
-		/*var index;
-		var property = "_id";
-		
-		var c, found=false;
-		for(c in $scope.userStories) {
-			if($scope.userStories[c][property] == id) {
-				found=true;
-				index = c;
-				break;
-			}
-		}
-		
-		$scope.userStories.splice(index, 1);*/
 	};
 	
 	$scope.editUserStory = function(userStory){
           $scope.body = userStory.body;
           $scope.priority = userStory.priority;
 		  $scope.difficulty = userStory.difficulty;
+		  $scope.idBacklog = userStory.backlog;
 		  $scope.id = userStory._id;
 	};
 	
-	$scope.updateUserStory = function(idBL, idUS){
+	$scope.updateUserStory = function(idUS){
 		if($scope.body === '' || !$scope.priority || !$scope.difficulty) { return; }
-		backlogs.updateUS(idBL, $scope.id, {
+		userStories.updateUS($scope.idBacklog, $scope.id, {
 			body: $scope.body, 
 			priority: $scope.priority,
 			difficulty: $scope.difficulty
@@ -54,6 +42,6 @@ function($scope, userStories){
 		$scope.body='';
 		$scope.priority='';
 		$scope.difficulty='';
-		$scope.backlog.userStories
+		$scope.id='';
 	};
 }]);

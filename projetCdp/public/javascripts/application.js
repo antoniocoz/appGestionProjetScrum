@@ -11,7 +11,7 @@ function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: '/home.html',
+      templateUrl: 'javascripts/backlogs/views/backlogs.client.view.html',
       controller: 'BacklogCtrl',
 	  // anytime our home state is entered, we will automatically query all backlogs from our backend
 	  resolve: {
@@ -22,7 +22,7 @@ function($stateProvider, $urlRouterProvider) {
     })
 	.state('userStories', {
 	  url: '/userStories/{id}',
-	  templateUrl: '/userStories.html',
+	  templateUrl: 'javascripts/userstories/views/userstories.client.view.html',
 	  controller: 'USCtrl',
 	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
 	  resolve: {

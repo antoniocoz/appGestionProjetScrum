@@ -30,7 +30,6 @@
 		  <td>{{us.priority}}</td>
 		  <td>{{us.difficulty}}</td>
 		  <td>
-		  <p>{{us._id}}</p>
 		  
 		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
 		  <button class="btn btn-warning" ng-click="editUserStory(us)">Modifier</button>
@@ -67,7 +66,7 @@
 			  <option>21</option>
 			</select>
 		  <div class="form-group">
-				<input type="hidden"
+				<input type="hidden"z
 					class="form-control"
 					placeholder="Id"
 					ng-model="id">
@@ -75,6 +74,6 @@
 		  </div>
 		</div>
 		<button class="btn btn-primary" ng-click="addUserStory()">Ajouter</button>
-		<button class="btn btn-info" ng-click="updateUserStory(backlog._id, us._id)">Editer</button> 
+		<button class="btn btn-info" ng-click="updateUserStory(us._id)">Editer</button> 
 
 </section>

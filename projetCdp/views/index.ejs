@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Environnement de developpement</title>
+	
+	<style> .glyphicon-thumbs-up { cursor:pointer } </style>
+  </head>
+  <body>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+		
+			<ui-view></ui-view>
+		
+		</div>
+	</div>
+	
+    <section ng-view>
+    </section>
+
+  </body>
+    
+    <script type="text/javascript" src="/lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/javascripts/backlogs/backlogs.client.module.js"></script>
+    <script src="/javascripts/backlogs/controllers/backlogs.client.controller.js"></script>
+    <script src="/javascripts/backlogs/services/backlogs.client.service.js"></script>
+    <script src="/javascripts/userstories/userstories.client.module.js"></script>
+    <script src="/javascripts/userstories/controllers/userstories.client.controller.js"></script>
+    <script src="/javascripts/userstories/services/userstories.client.service.js"></script>
+    <script src="/javascripts/application.js"></script>
+
+</html>

@@ -1,0 +1,79 @@
+<section>
+	  <div class="page-header">		
+		
+	  </div>
+	  
+	  <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div>
+			  <ul class="nav navbar-nav">
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#">Sprints</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+	  
+	  <h3>Détails du backlog</h3>
+			
+	  <div class="table-responsive">
+	  <table  class="table-bordered">
+		<tr>
+			<td><span style="font-size:20px;">Description</span></td>
+			<td><span style="font-size:20px;">Priorite</span></td>
+			<td><span style="font-size:20px;">Difficulte</span></td>
+			<td><span style="font-size:20px;">Options</span></td>
+		</tr>
+		<tr ng-repeat="us in userStories">
+		<span style="font-size:20px;">
+		  <td>{{us.body}}</td>
+		  <td>{{us.priority}}</td>
+		  <td>{{us.difficulty}}</td>
+		  <td>
+		  
+		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
+		  <button class="btn btn-warning" ng-click="editUserStory(us)">Modifier</button>
+		  
+		  </td>
+		</span>
+		</tr>
+	  </table>
+	  </div>
+	  
+		<h3>Ajouter/Editer une User Story</h3>
+
+		<div class="form-group">
+		  <input type="text"
+			  class="form-control"
+			  placeholder="Description"
+			  ng-model="body">
+		  </input>
+		  <br>
+		  <label for="sel1">Priorite:</label>
+		  <input type="text"
+			  ng-pattern="/^[0-9]+$/"
+			  class="form-control"
+			  ng-model="priority">
+		  </input>
+		  <br>
+		  <label for="sel1">Difficulte:</label>
+		  <select class="form-control" ng-model="difficulty">
+			  <option>2</option>
+			  <option>3</option>
+			  <option>5</option>
+			  <option>8</option>
+			  <option>13</option>
+			  <option>21</option>
+			</select>
+		  <div class="form-group">
+				<input type="hidden"z
+					class="form-control"
+					placeholder="Id"
+					ng-model="id">
+				</input>
+		  </div>
+		</div>
+		<button class="btn btn-primary" ng-click="addUserStory()">Ajouter</button>
+		<button class="btn btn-info" ng-click="updateUserStory(us._id)">Editer</button> 
+
+</section>

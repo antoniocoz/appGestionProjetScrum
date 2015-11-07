@@ -23,6 +23,7 @@ function($scope, backlogs){
 		});
 		$scope.title = '';
 	  $scope.description = '';
+	  $scope.id='';
   };
   
   $scope.addBacklog = function(){

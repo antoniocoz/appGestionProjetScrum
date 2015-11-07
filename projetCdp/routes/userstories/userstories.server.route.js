@@ -12,9 +12,8 @@ router.get('/userStories/:backlog', function(req, res) {
     });
 });
 
-router.post('/userStories/:backlog', function(req, res, next) {
+router.post('/userStories', function(req, res, next) {
   var us = new US(req.body);
-  us.backlog = req.backlog;
 
   us.save(function(err, us){
     if(err){ return next(err); }

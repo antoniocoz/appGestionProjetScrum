@@ -6,10 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-var mongoose = require('mongoose');
-var Backlog = mongoose.model('Backlog');
-var US = mongoose.model('US');
 
+//var mongoose = require('mongoose');
+//var Backlog = mongoose.model('Backlog');
+//var US = mongoose.model('US');
+/*
 //Get all backlogs
 router.get('/backlogs', function(req, res, next) {
   Backlog.find(function(err, backlogs){
@@ -48,7 +49,7 @@ router.get('/userStories/:backlog', function(req, res) {
         res.json(doc);
     });
 });
-
+/*
 //get one backlog with associated US
 router.get('/backlogs/:backlog', function(req, res) {
     var query = {"_id": req.backlog._id};
@@ -79,7 +80,7 @@ router.post('/userStories/:backlog', function(req, res, next) {
     res.json(us);
   });
 });
-
+/*
 //delete one backlog with associated US
 router.delete('/backlogs/:backlog', function(req, res) {
   Backlog.remove({_id: req.params.backlog}, function(err, doc) {
@@ -108,5 +109,5 @@ router.put('/userStories/:userStory', function(req, res) {
         res.json(doc);  
       });
 });
-
+*/
 module.exports = router;

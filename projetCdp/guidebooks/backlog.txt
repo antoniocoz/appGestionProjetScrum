@@ -1,0 +1,35 @@
+Un "backlog" est une liste de fonctionnalités appelées userstory, 
+jugée nécessaire pour la réalisation du projet:
+
+La liste des backlogs est par défault la page d'accueil.
+
+**Ajout d'un backlog**
+
+Pour ajouter un backlog, il faut renseigner les différents champs
+du formulaire. Puis cliquer sur le bouton ajouter.
+
+Il sera ensuite automatiquement ajouter à la liste des backlogs existants.
+
+**Edition d'un backlog**
+
+Pour modifier un backlog, il faut cliquer sur le bouton modifier qui est présent 
+en dessous du descriptif de ce backlog. Ensuite, il faut de nouveau remplir 
+le formulaire (c'est le même que celui de l'ajout). Enfin cliquer sur editer.
+
+Il sera automatiquement éditer et les modifications seront visibles instantanément
+dans le descriptif de celui-ci.
+
+**Suppression d'un backlog**
+
+Pour supprimer un backlog, il faut cliquer sur le bouton supprimer qui est présent
+en dessous du descriptif de ce backlog.
+
+Il sera aumotiquement supprimer de la liste des backlogs.
+
+**Détail d'un backlog**
+
+Pour voir en détail un backlog, il faut cliquer sur le bouton détail qui est présent
+en dessous du descriptif de ce backlog.
+
+Vous serez automatiquement rediriger vers une nouvelle page qui est la détail du 
+backlog.

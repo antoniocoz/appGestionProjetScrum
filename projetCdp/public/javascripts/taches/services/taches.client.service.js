@@ -2,13 +2,22 @@ angular.module('taches').factory('tacheService', ['$http', function($http){
   var o = {taches: []};
 
   var idUs;
+  var idBl;
 
   o.setIdUs = function(id) {
     idUs = id;
   };
 
+  o.setIdBl = function(id) {
+    idBl = id;
+  };
+
   o.getIdUs = function(id) {
     return idUs;
+  };
+
+  o.getIdBl = function(id) {
+    return idBl;
   };
 
   o.getAll = function(usId) {
@@ -17,7 +26,6 @@ angular.module('taches').factory('tacheService', ['$http', function($http){
     });
   };
 
-  //get one backlog in using an id
   o.get = function(tacheId) {
     return $http.get('/tache/' + tacheId).then(function(response){
         return response;
@@ -25,7 +33,7 @@ angular.module('taches').factory('tacheService', ['$http', function($http){
   };
   o.delete = function(tacheId,usId) {
 	  return $http.delete('/taches/' + tacheId).success(function(response){
-		o.getAll(usId);
+		  o.getAll(usId);
 	  });
 	};
 

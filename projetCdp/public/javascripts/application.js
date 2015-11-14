@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'mean';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches']);
 
 //Setup a state called home
 mainApplicationModule.config([
@@ -29,6 +29,31 @@ function($stateProvider, $urlRouterProvider) {
 		userStoriesPromise: ['$stateParams', 'userStories', function($stateParams, userStories) {
 			userStories.setIdBl($stateParams.id);
 		  return userStories.getAll($stateParams.id);
+		}]
+	  }
+	})
+	.state('taches', {
+	  url: '/taches/:usId',
+	  templateUrl: 'javascripts/taches/views/list-taches.client.view.html',
+	  controller: 'tacheController',
+	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
+	  
+	  resolve: {
+		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
+		  //console.log($stateParams.usId);
+		  return tacheService.getAll($stateParams.usId);
+		}]
+	  }
+	})
+	.state('taches/create', {
+	  url: '/taches/create/:usId',
+	  templateUrl: 'javascripts/taches/views/create-taches.client.view.html',
+	  controller: 'tacheController',
+	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
+	  resolve: {
+		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
+		  //console.log($stateParams.usId);
+		  //return tacheService.getAll($stateParams.usId);
 		}]
 	  }
 	});

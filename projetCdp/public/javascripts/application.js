@@ -33,21 +33,21 @@ function($stateProvider, $urlRouterProvider) {
 	  }
 	})
 	.state('taches', {
-	  url: '/taches/:usId',
+	  url: '/taches/:usId/:idBL',
 	  templateUrl: 'javascripts/taches/views/list-taches.client.view.html',
 	  controller: 'tacheController',
 	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
 	  
 	  resolve: {
 		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
-		  //console.log($stateParams.usId);
+		  tacheService.setIdBl($stateParams.idBL);
 		  tacheService.setIdUs($stateParams.usId);
 		  return tacheService.getAll($stateParams.usId);
 		}]
 	  }
 	})
 	.state('taches/create', {
-	  url: '/taches/create/:usId',
+	  url: '/taches/create/:usId/:idBL',
 	  templateUrl: 'javascripts/taches/views/create-taches.client.view.html',
 	  controller: 'tacheController',
 	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
@@ -55,6 +55,8 @@ function($stateProvider, $urlRouterProvider) {
 		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
 		  //console.log($stateParams.usId);
 		  //return tacheService.getAll($stateParams.usId);
+		  console.log($stateParams.idBL);
+		  tacheService.setIdBl($stateParams.idBL);
 		  tacheService.setIdUs($stateParams.usId);
 		}]
 	  }

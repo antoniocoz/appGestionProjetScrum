@@ -8,11 +8,12 @@ function($scope, $location, tacheService){
 
     $scope.usId = tacheService.getIdUs();
 
+    $scope.backlogId = tacheService.getIdBl();
+
 	$scope.create = function(){
 	      if($scope.numero === '' || !$scope.description || !$scope.dure) { 
 	      	return; 
 	      }
-	      console.log($scope.usId);
 		  tacheService.create({
 			numero: $scope.numero,
 			description: $scope.description,
@@ -30,7 +31,6 @@ function($scope, $location, tacheService){
 	
 	$scope.delete = function(tache){
 		tacheService.delete(tache._id,tache.usId);
-		//$location.path('taches/' + $scope.usId);
 	};
 	
 	$scope.edit = function(tache){

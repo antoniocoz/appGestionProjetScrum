@@ -1,0 +1,67 @@
+<!-- La view listar artículos -->
+<section>
+	<h1>Taches</h1>
+	<!--<p>{{taches}}</p> -->
+	<div class="table-responsive" ng-hide="editer">
+		<!-- La lista de artículos -->
+        <table class="table table-striped">
+	       <thead>
+	        <tr>
+	          <th><span style="font-size:20px;">Nro</span></th>
+	          <th><span style="font-size:20px;">Description</span></th>
+	          <th><span style="font-size:20px;">Dure</span></th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr data-ng-repeat="tache in taches">
+	          <td>{{tache.numero}}</td>
+	          <td>{{tache.description}}</td>
+	          <td>{{tache.dure}}</td>
+	          <td>
+	          	<button class="btn btn-warning" data-ng-click="edit(tache);">Modifier</button>
+	          </td>
+	          <td><a data-ng-href="/#/taches/{{us._id}}" >
+	          	   <button class="btn btn-danger" data-ng-click="delete(tache);">Supprimer</button> 
+	              </a>
+	          </td>
+	        </tr>
+	      </tbody>
+        </table>
+    </div>
+    <div ng-show="editer">
+		<form  novalidate>
+			<div>
+				<label for="Numero">Numero:</label>
+				<div>
+					<input class="form-control" type="text" data-ng-model="tache.numero" id="numero" placeholder="Numero" required>
+				</div>
+			</div>
+			<div>
+				<label for="description">Description:</label>
+				<div>
+					<textarea class="form-control" data-ng-model="tache.description" id="description" cols="80" rows="10" 
+						placeholder="Description">
+					</textarea>
+				</div>
+			</div>
+			<div>
+				<label for="dure">Dure:</label>
+				<div>
+					<input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Dure" required>
+				</div>
+			</div></br>
+			<div>
+				 <button class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
+                 <button class="btn btn-info" ng-click="findAllByUs(tache.usId)">Annuler</button> 
+			</div>
+			<!-- El elemento mensaje de error -->
+			<div data-ng-show="error">
+				<strong data-ng-bind="error"></strong>
+			</div>
+		</form>
+    </div>     
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo 
+	<div>
+		<a class="testDetail" href="#/taches/create/{{us._id}}"><button class="btn btn-primary btn-test">Créer</button></a>
+	</div> -->
+</section>

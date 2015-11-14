@@ -4,9 +4,9 @@ require('./models/Backlogs');
 require('./models/Userstories');
 require('./models/Taches');
 require('./models/Sprints');
-mongoose.connect('mongodb://localhost/cdp');
+//mongoose.connect('mongodb://localhost/cdp');
 // connextion a la base de données online (mongolab)
-//mongoose.connect('mongodb://scrum:developpement@ds047458.mongolab.com:47458/projetscrumdev');
+mongoose.connect('mongodb://scrum:developpement@ds047458.mongolab.com:47458/projetscrumdev');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');

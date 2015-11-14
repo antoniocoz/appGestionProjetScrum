@@ -30,8 +30,8 @@
 		  <td>{{us.priority}}</td>
 		  <td>{{us.difficulty}}</td>
 		  <td>
-		  <a class="testDetail" href="#/taches/{{us._id}}"><button class="btn btn-primary btn-test">Details</button></a> 
-		  <a class="testDetail" href="#/taches/create/{{us._id}}">
+		  <a class="testDetail" href="#/taches/{{us._id}}/{{us.backlog}}"><button class="btn btn-primary btn-test">Details</button></a> 
+		  <a class="testDetail" href="#/taches/create/{{us._id}}/{{us.backlog}}">
 		  	<button class="btn btn-primary btn-test">Add Tache</button>
 		  </a> 
 		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  

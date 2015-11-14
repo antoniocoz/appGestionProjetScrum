@@ -17,7 +17,7 @@
 	  <h3>Détails du backlog</h3>
 			
 	  <div class="table-responsive">
-	  <table  class="table-bordered">
+	  <table  class="table table-striped">
 		<tr>
 			<td><span style="font-size:20px;">Description</span></td>
 			<td><span style="font-size:20px;">Priorite</span></td>
@@ -30,7 +30,10 @@
 		  <td>{{us.priority}}</td>
 		  <td>{{us.difficulty}}</td>
 		  <td>
-		  
+		  <a class="testDetail" href="#/taches/{{us._id}}"><button class="btn btn-primary btn-test">Details</button></a> 
+		  <a class="testDetail" href="#/taches/create/{{us._id}}">
+		  	<button class="btn btn-primary btn-test">Add Tache</button>
+		  </a> 
 		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
 		  <button class="btn btn-warning" ng-click="editUserStory(us)">Modifier</button>
 		  

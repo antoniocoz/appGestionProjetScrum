@@ -5,10 +5,14 @@ function($scope, $location, tacheService){
 	//On récupère l'ensemble des US via getAll du service
 	$scope.taches = tacheService.taches;
     $scope.editer=false; 
+
+    $scope.usId = tacheService.getIdUs();
+
 	$scope.create = function(){
 	      if($scope.numero === '' || !$scope.description || !$scope.dure) { 
 	      	return; 
 	      }
+	      console.log($scope.usId);
 		  tacheService.create({
 			numero: $scope.numero,
 			description: $scope.description,

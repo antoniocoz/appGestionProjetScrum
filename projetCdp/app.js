@@ -3,9 +3,10 @@ var mongoose = require('mongoose');
 require('./models/Backlogs');
 require('./models/Userstories');
 require('./models/Taches');
-//mongoose.connect('mongodb://localhost/cdp');
+require('./models/Sprints');
+mongoose.connect('mongodb://localhost/cdp');
 // connextion a la base de données online (mongolab)
-mongoose.connect('mongodb://scrum:developpement@ds047458.mongolab.com:47458/projetscrumdev');
+//mongoose.connect('mongodb://scrum:developpement@ds047458.mongolab.com:47458/projetscrumdev');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -18,6 +19,7 @@ var backlogs = require('./routes/backlog/backlog.server.route');
 var userstories = require('./routes/userstories/userstories.server.route');
 var users = require('./routes/users');
 var taches = require('./routes/taches/taches.server.route');
+var sprints = require('./routes/sprints/sprints.server.route');
 
 var app = express();
 
@@ -38,6 +40,7 @@ app.use('/users', users);
 app.use('/', backlogs);
 app.use('/', userstories);
 app.use('/', taches);
+app.use('/', sprints);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

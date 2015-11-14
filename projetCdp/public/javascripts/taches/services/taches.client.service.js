@@ -1,6 +1,16 @@
 angular.module('taches').factory('tacheService', ['$http', function($http){
   var o = {taches: []};
 
+  var idUs;
+
+  o.setIdUs = function(id) {
+    idUs = id;
+  };
+
+  o.getIdUs = function(id) {
+    return idUs;
+  };
+
   o.getAll = function(usId) {
     return $http.get('/taches/' + usId).success(function(data){
       angular.copy(data, o.taches);

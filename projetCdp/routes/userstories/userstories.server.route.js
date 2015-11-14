@@ -22,7 +22,7 @@ router.post('/userStories', function(req, res, next) {
 });
 
 router.delete('/userStories/:userStory', function(req, res) {
-	US.remove({_id: req.params.userStory}, function(err, doc) {
+  US.remove({_id: req.params.userStory}, function(err, doc) {
     if (err) { return next(err); }
       res.json(doc);
     });
@@ -33,10 +33,11 @@ router.put('/userStories/:userStory', function(req, res) {
   var body = req.body.body;
   var priority = req.body.priority;
   var difficulty = req.body.difficulty;
+  var sprint = req.body.sprint;
   
   var query = {"_id":req.params.userStory};
 
-      US.findOneAndUpdate(query, {body: body, priority: priority, difficulty: difficulty}, { 'new': true }, function(doc) {
+      US.findOneAndUpdate(query, {body: body, priority: priority, difficulty: difficulty, sprint: sprint}, { 'new': true }, function(doc) {
         res.json(doc);  
       });
 });

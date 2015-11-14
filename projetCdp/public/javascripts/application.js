@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'mean';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints']);
 
 //Setup a state called home
 mainApplicationModule.config([
@@ -41,6 +41,7 @@ function($stateProvider, $urlRouterProvider) {
 	  resolve: {
 		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
 		  //console.log($stateParams.usId);
+		  tacheService.setIdUs($stateParams.usId);
 		  return tacheService.getAll($stateParams.usId);
 		}]
 	  }
@@ -54,7 +55,21 @@ function($stateProvider, $urlRouterProvider) {
 		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
 		  //console.log($stateParams.usId);
 		  //return tacheService.getAll($stateParams.usId);
+		  tacheService.setIdUs($stateParams.usId);
 		}]
+	  }
+	})
+	.state('sprints', {
+	  url: '/sprints/:id',
+	  templateUrl: 'javascripts/sprints/views/sprints.client.view.html',
+	  controller: 'SprintCtrl',
+	  resolve: {
+		sprintsPromise: ['$stateParams', 'sprints', function($stateParams, sprints) {
+			sprints.setIdBl($stateParams.id);
+			sprints.getAllUS($stateParams.id);
+		  return sprints.getAll($stateParams.id);
+		}]
+
 	  }
 	});
 

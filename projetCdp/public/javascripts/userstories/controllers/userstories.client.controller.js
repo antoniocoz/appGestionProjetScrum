@@ -13,7 +13,8 @@ function($scope, userStories){
 		body: $scope.body,
 		priority: $scope.priority,
 		difficulty: $scope.difficulty,
-		backlog: $scope.backlogId
+		backlog: $scope.backlogId,
+		sprint: ""
 	  });
 	  $scope.body = '';
 	  $scope.priority = '';
@@ -29,6 +30,7 @@ function($scope, userStories){
           $scope.priority = userStory.priority;
 		  $scope.difficulty = userStory.difficulty;
 		  $scope.idBacklog = userStory.backlog;
+		  $scope.idSprint = userStory.sprint;
 		  $scope.id = userStory._id;
 	};
 	
@@ -37,11 +39,13 @@ function($scope, userStories){
 		userStories.updateUS($scope.idBacklog, $scope.id, {
 			body: $scope.body, 
 			priority: $scope.priority,
-			difficulty: $scope.difficulty
+			difficulty: $scope.difficulty,
+			sprint: $scope.idSprint
 		});
 		$scope.body='';
 		$scope.priority='';
 		$scope.difficulty='';
 		$scope.id='';
+		$scope.idSprint='';
 	};
 }]);

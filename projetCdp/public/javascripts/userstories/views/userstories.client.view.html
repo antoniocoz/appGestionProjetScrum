@@ -7,8 +7,8 @@
 		  <div class="container-fluid">
 			<div>
 			  <ul class="nav navbar-nav">
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/sprints/{{backlogId}}">Sprints</a></li>
+				<li><a id="aHome" href="#/home">Home</a></li>
+				<li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
 			  </ul>
 			</div>
 		  </div>
@@ -30,12 +30,12 @@
 		  <td>{{us.priority}}</td>
 		  <td>{{us.difficulty}}</td>
 		  <td>
-		  <a class="testDetail" href="#/taches/{{us._id}}/{{us.backlog}}"><button class="btn btn-primary btn-test">Details</button></a> 
-		  <a class="testDetail" href="#/taches/create/{{us._id}}/{{us.backlog}}">
-		  	<button class="btn btn-primary btn-test">Add Tache</button>
+		  <a class="testDetail" href="#/taches/{{us._id}}/{{us.backlog}}"><button class="btn btn-primary btn-detail">Details</button></a> 
+		  <a href="#/taches/create/{{us._id}}/{{us.backlog}}">
+		  	<button class="btn btn-primary btn-add">Add Tache</button>
 		  </a> 
-		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
-		  <button class="btn btn-warning" ng-click="editUserStory(us)">Modifier</button>
+		  <button class="btn btn-danger btn-delete" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
+		  <button class="btn btn-warning btn-edit" ng-click="editUserStory(us)">Modifier</button>
 		  
 		  </td>
 		</span>

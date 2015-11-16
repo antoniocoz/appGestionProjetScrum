@@ -1,0 +1,26 @@
+Les éléments des sprints sont généralement exprimés en heures et ne doivent pas dépasser 
+deux journées de travail, sinon il convient de les décomposer en plusieurs éléments. 
+Ces éléments sont appelés "tâches".
+
+**Ajout d'une tâche**
+
+Au préalable, ajouter un backlog et une userstory.
+Dans le détail du backlog souhaité cliquer sur Add Tache de l'userstory voulu.
+Remplisser les 3 champs du formulaire, puis cliquer sur ajouter.
+
+Elle sera automatiquement ajouter au détail de l'userstory en question.
+
+**Modifier une tâche**
+
+Cliquer sur le détail de l'userstory, puis sur cliquer sur le bouton modifier 
+de la tâche souhaitée. Changer les valeurs des champs au besoin, enfin cliquer 
+sur mise à jour. 
+
+La modification sera pris en compte instantanément.
+
+**Supprimer une tâche**
+
+Cliquer sur le détail de l'userstory, puis sur cliquer sur le bouton supprimer 
+de la tâche souhaitée.
+
+La tâche sera automatiquement supprimer de la liste des tâches.

@@ -4,6 +4,7 @@ et les activités de développement s'organisent autour de ces incréments appel
 **Lister les user stories**
 
 Pour accéder aux user stories d'un backlog, il faut cliquer sur son bouton détail.
+(Il faut au préalable avoir créé un backog)
 
 Cela redirige sur une nouvelle page qui liste les user stories présentes de ce 
 backlog.

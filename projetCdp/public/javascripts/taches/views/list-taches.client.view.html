@@ -9,8 +9,8 @@
 		  <div class="container-fluid">
 			<div>
 			  <ul class="nav navbar-nav">
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/userStories/{{backlogId}}">User Stories</a></li>
+				<li><a id="aHome" href="#/home">Home</a></li>
+				<li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
 			  </ul>
 			</div>
 		  </div>
@@ -23,9 +23,9 @@
         <table class="table table-striped">
 	       <thead>
 	        <tr>
-	          <th><span style="font-size:20px;">Nro</span></th>
+	          <th><span style="font-size:20px;">N°</span></th>
 	          <th><span style="font-size:20px;">Description</span></th>
-	          <th><span style="font-size:20px;">Dure</span></th>
+	          <th><span style="font-size:20px;">Duree</span></th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -60,9 +60,9 @@
 				</div>
 			</div>
 			<div>
-				<label for="dure">Dure:</label>
+				<label for="dure">Duree:</label>
 				<div>
-					<input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Dure" required>
+					<input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Duree" required>
 				</div>
 			</div></br>
 			<div>

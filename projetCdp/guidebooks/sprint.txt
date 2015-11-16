@@ -1,0 +1,43 @@
+Le sprint est une période au bout de laquelle l'équipe délivre un incrément du produit, 
+potentiellement livrable. Une fois la durée choisie, elle reste constante pendant toute la durée du développement. 
+Un nouveau sprint démarre dès la fin du précédent.
+
+Chaque sprint possède un but et on lui associe une liste d'userstory à réaliser.
+
+**Ajout d'un sprint**
+
+Au préalable, il faut avoir créé un backlog.
+Cliquer sur le bouton détail du backlog souhaité.
+Si aucune userstory n'est créée, profitez en pour le faire maintenant.
+Cliquer sur sprints qui se trouve sur le bandeau de navigation.
+Remplir le champs, puis cliquer sur le bouton ajouter.
+
+Le sprint sera automatiquement ajouter à la liste des sprints.
+
+**Modifier un sprint**
+
+Cliquer sur le bouton modifier du sprint que vous souhaitez changer.
+
+Changer la valeur du champ qui se trouve dans le même formulaire que la création du sprint, puis cliquer sur editer.
+
+La modification sera pris en compte instantanément.
+
+**Ajouter d'une userstory au backlog**
+
+Pour ajouter des userstories au sprint il faut cliquer sur le bouton ajouter US du sprint souhaité.
+
+Ensuite, selectionner les us souhaiter dans le champ de sélection, puis cliquer sur ajouter.
+
+Les userstories seront automatiquement ajouter aux sprints.
+
+**Supprimer une userstory d'un sprint**
+
+Pour supprimer une userstory d'un sprint il faut cliquer sur le bouton supprimer de l'userstory en question.
+
+L'userstory sera automatiquement supprimer de la liste des userstory.
+
+**Supprimer un sprint**
+
+Pour supprimer un sprint, il faut cliquer sur le bouton supprimer du sprint en question.
+
+Le sprint sera automatiquement supprimer de la liste de sprints

@@ -7,8 +7,8 @@
 		  <div class="container-fluid">
 			<div>
 			  <ul class="nav navbar-nav">
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/userStories/{{backlogId}}">User Stories</a></li>
+				<li><a id="aHome" href="#/home">Home</a></li>
+				<li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
 			  </ul>
 			</div>
 		  </div>
@@ -32,7 +32,7 @@
 			  <tr ng-repeat="sp in sprints">
 			  	<td>{{sp.title}}</td>
 			  	<td><button class="btn btn-warning" ng-click="editSprint(sp)">Modifier</button>
-			  	<button class="btn btn-primary" ng-click="showFormUs(sp)">Ajouter US</button>
+			  	<button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)">Ajouter US</button>
 			    <button class="btn btn-danger" ng-click="deleteSprint(sp._id)">Supprimer</button> </td>
 			  	<td>
 			  		<table   class="table table-striped">
@@ -49,7 +49,7 @@
 								<td>{{us.body}}</td>
 								<td>{{us.priority}}</td>
 								<td>{{us.difficulty}}</td>
-								<td><button class="btn btn-danger" ng-click="removeUserStory(us)">Supprimer</button></td>
+								<td><button class="btn btn-danger btn-deleteUS" ng-click="removeUserStory(us)">Supprimer</button></td>
 							</tr>
 						</tbody>
 			  		</table>
@@ -69,7 +69,7 @@
 			  <select multiple ng-model="uss" class="form-control" ng-options="us as us.body + ' priority : ' + us.priority for us in userStories">
 			  </select>
 			  <br>
-			  <button class="btn btn-primary" ng-click="addUS()">Ajouter</button>
+			  <button class="btn btn-primary btn-addUSclick" ng-click="addUS()">Ajouter</button>
 		  </div>
 
 		  <div class="form-group">
@@ -81,14 +81,14 @@
 		  <br>
 
 		  <div class="form-group">
-				<input type="hidden"z
+				<input type="hidden"
 					class="form-control"
 					placeholder="Id"
 					ng-model="id">
 				</input>
 		  </div>
 		</div>
-		<button class="btn btn-primary" ng-click="addSprint()">Ajouter</button>
-		<button class="btn btn-info" ng-click="updateSprint(us._id)">Editer</button> 
+		<button class="btn btn-primary btn-add" ng-click="addSprint()">Ajouter</button>
+		<button class="btn btn-info btn-edit" ng-click="updateSprint(us._id)">Editer</button> 
 
 </section>

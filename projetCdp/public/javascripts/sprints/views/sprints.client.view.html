@@ -66,7 +66,7 @@
 		  <div ng-show="updateUserStories" class="form-group">
 			  <label for="sel1">User Stories (maintenir Ctrl pour selectionner plusieurs items) :</label>
 
-			  <select multiple ng-model="uss" class="form-control" ng-options="us as us.body for us in userStories track by us.priority">
+			  <select multiple ng-model="uss" class="form-control" ng-options="us as us.body + ' priority : ' + us.priority for us in userStories">
 			  </select>
 			  <br>
 			  <button class="btn btn-primary" ng-click="addUS()">Ajouter</button>

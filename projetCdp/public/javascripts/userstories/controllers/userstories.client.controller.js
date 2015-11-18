@@ -6,6 +6,7 @@ function($scope, userStories){
 	//On récupère l'ensemble des US via getAll du service
 	$scope.userStories = userStories.userStories;
 	$scope.backlogId = userStories.getIdBl();
+	$scope.editer=false;
 	
 	$scope.addUserStory = function(){
 	  if($scope.body === '' || !$scope.priority || !$scope.difficulty) { return; }
@@ -19,6 +20,7 @@ function($scope, userStories){
 	  $scope.body = '';
 	  $scope.priority = '';
 	  $scope.difficulty = '';
+	  $scope.editer=false;
 	};
 	
 	$scope.deleteUserStory = function(id, idBL){
@@ -32,6 +34,7 @@ function($scope, userStories){
 		  $scope.idBacklog = userStory.backlog;
 		  $scope.idSprint = userStory.sprint;
 		  $scope.id = userStory._id;
+		  $scope.editer=true;
 	};
 	
 	$scope.updateUserStory = function(idUS){
@@ -47,5 +50,20 @@ function($scope, userStories){
 		$scope.difficulty='';
 		$scope.id='';
 		$scope.idSprint='';
+		$scope.editer=false;
+		
+	};
+
+	$scope.nouveau = function(){
+		$scope.body='';
+		$scope.priority='';
+		$scope.difficulty='';
+		$scope.id='';
+		$scope.idSprint='';
+		$scope.editer=true;
+	};
+
+	$scope.annuler = function(){
+		$scope.editer=false;
 	};
 }]);

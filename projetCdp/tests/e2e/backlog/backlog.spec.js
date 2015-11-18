@@ -13,8 +13,8 @@ describe("Backlog", function() {
             element(by.model('description')).clear().sendKeys("Test");
             element(by.id('BtnAddBacklog')).click();
 
-            expect(element.all(by.model('titleBL')).last().getText()).toEqual('Test'); 
-            expect(element.all(by.model('descriptionBL')).last().getText()).toEqual('Test'); 
+            expect(element.all(by.repeater('backlog in backlogs').column('backlog.title')).last().getText()).toEqual('Test'); 
+            expect(element.all(by.repeater('backlog in backlogs').column('backlog.description')).last().getText()).toEqual('Test'); 
         });
     });
 
@@ -25,8 +25,8 @@ describe("Backlog", function() {
             element(by.model('description')).clear().sendKeys("Test Update");
             element(by.id('BtnEditBacklog')).click();
 
-            expect(element.all(by.model('titleBL')).last().getText()).toEqual('Test Update, impossible que le nom d\'un titre soit ça xrtrz'); 
-            expect(element.all(by.model('descriptionBL')).last().getText()).toEqual('Test Update'); 
+            expect(element.all(by.repeater('backlog in backlogs').column('backlog.title')).last().getText()).toEqual('Test Update, impossible que le nom d\'un titre soit ça xrtrz'); 
+            expect(element.all(by.repeater('backlog in backlogs').column('backlog.description')).last().getText()).toEqual('Test Update'); 
         });
     });
     
@@ -42,7 +42,7 @@ describe("Backlog", function() {
         it("should delete a backlog", function(){
             browser.get('/#/home');
             $$('button.btn-danger').last().click();
-            expect(element.all(by.model('titleBL')).last().getText()).not.toEqual('Test Update, impossible que le nom d\'un titre soit ça xrtrz');
+            expect(element.all(by.repeater('backlog in backlogs').column('backlog.title')).last().getText()).not.toEqual('Test Update, impossible que le nom d\'un titre soit ça xrtrz');
         });
     });
 });

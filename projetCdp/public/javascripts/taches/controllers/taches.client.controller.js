@@ -26,7 +26,7 @@ function($scope, $location, tacheService){
 		  $scope.numero = '';
 		  $scope.description = '';
 		  $scope.dure = '';
-		  $location.path('taches/' + $scope.usId);
+		  $location.path('taches/' + $scope.usId+'/'+$scope.backlogId);
 	};
 	
 	$scope.delete = function(tache){

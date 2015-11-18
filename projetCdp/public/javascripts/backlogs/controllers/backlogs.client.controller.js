@@ -4,6 +4,7 @@ angular.module('backlogs').controller('BacklogCtrl', [
 'backlogs',
 function($scope, backlogs){
   $scope.backlogs = backlogs.backlogs;
+  $scope.editer=false; 
   
   $scope.deleteBacklog = function(id){
 	  backlogs.deleteBL(id);
@@ -13,6 +14,7 @@ function($scope, backlogs){
           $scope.title = backlog.title;
           $scope.description = backlog.description;
 		  $scope.id = backlog._id;
+		  $scope.editer=true;
   };
   
   $scope.updateBacklog = function(id){
@@ -24,6 +26,7 @@ function($scope, backlogs){
 		$scope.title = '';
 	  $scope.description = '';
 	  $scope.id='';
+	  $scope.editer=false; 
   };
   
   $scope.addBacklog = function(){
@@ -34,6 +37,18 @@ function($scope, backlogs){
 		});
 	  $scope.title = '';
 	  $scope.description = '';
+	  $scope.editer=false; 
+  };
+
+  $scope.nouveau = function(){
+		  $scope.editer=true;
+		  $scope.title = "";
+          $scope.description = "";
+		  $scope.id = "";
+  };
+
+  $scope.annuler = function(){
+		  $scope.editer=false;
   };
   
 }]);

@@ -9,6 +9,7 @@ function($scope, sprints, userStories){
 	$scope.backlogId = sprints.getIdBl();
 
 	$scope.updateUserStories = false;
+	$scope.edit = false;
 
 	$scope.$watch('selected', function(nowSelected){
 	  	$scope.uss = [];
@@ -37,12 +38,14 @@ function($scope, sprints, userStories){
 		backlog: $scope.backlogId
 	  });
 	  $scope.title = '';
+	  $scope.edit = false;
 
 	};
 
 	$scope.showFormUs = function(sprint){
           $scope.updateUserStories = true;
           $scope.id = sprint._id;
+          $scope.edit = true;
 
 	};
 
@@ -57,11 +60,15 @@ function($scope, sprints, userStories){
 			});
 		}
 		$scope.updateUserStories = false;
+	    $scope.edit = false;
+
 	};
 
 	$scope.editSprint = function(sprint){
           $scope.title = sprint.title;
           $scope.id = sprint._id;
+          $scope.edit = true;
+
 
 	};
 
@@ -83,10 +90,21 @@ function($scope, sprints, userStories){
 		});
 		$scope.title = '';
 	  $scope.id='';
+      $scope.edit = false;
+
   };
 
-  $scope.deleteSprint = function(id){
+  	$scope.deleteSprint = function(id){
 		sprints.deleteSP(id, $scope.backlogId);
+	};
+
+	$scope.newSprint = function(){
+          $scope.edit = true;
+	};
+	$scope.cancel = function(){
+          $scope.edit = false;
+          $scope.updateUserStories = false;
+
 	};
 
 }]);

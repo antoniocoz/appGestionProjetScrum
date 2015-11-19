@@ -1,13 +1,12 @@
-Pour lancer les tests,
+﻿Pour lancer les tests,
 
-- Ouvrir un terminal et lancer mongod
+- Ouvrir un terminal, aller à la racine du projet et lancer npm start
 
-- Ouvrir un second terminal, aller à la racine du projet et lancer npm start
-
-- Ouvrir un troisième terminal, aller à la racine du projet et lancer protractor protractor.conf.js
+- Ouvrir un second terminal, aller à la racine du projet et lancer protractor tests/protractor.conf.js
 
 Si ça ne marche pas :
 
+	- mettre la commande webdriver-manager update
 	- Assurer vous d'avoir installer Firefox (sinon juste changer firefox par chrome).
 	- npm install ? au cas où il manque une dépendance.
 

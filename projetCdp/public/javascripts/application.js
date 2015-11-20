@@ -73,6 +73,17 @@ function($stateProvider, $urlRouterProvider) {
 		}]
 
 	  }
+	})
+	.state('commits', {
+	  url: '/commits/:id',
+	  templateUrl: 'javascripts/commits/views/commits.client.view.html',
+	  controller: 'CommitCtrl',
+	  resolve: {
+		sprintsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
+			return commits.setIdBl($stateParams.id);
+		}]
+
+	  }
 	});
 
   // redirect unspecified routes

@@ -7,6 +7,6 @@ exports.config = {
 
 	chromeOnly: false,
   	capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'firefox'
   },
 }

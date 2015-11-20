@@ -2,3 +2,4 @@ project.xml
 projetCdp/node_modules/*
 projetCdp/public/lib/*
 projetCdp/public/stylesheets/*
+projetCdp/tests/protractor.conf.js

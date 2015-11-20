@@ -13,42 +13,60 @@ function($scope, backlogs){
   $scope.editBacklog = function(backlog){
           $scope.title = backlog.title;
           $scope.description = backlog.description;
+		  $scope.link = backlog.gitlink;
 		  $scope.id = backlog._id;
 		  $scope.editer=true;
   };
   
   $scope.updateBacklog = function(id){
-          if(!$scope.title || $scope.title === '' || !$scope.description || $scope.description === '') { return; }
-		  backlogs.updateBL($scope.id, {
+    if(!$scope.title || $scope.title === '' || !$scope.description || $scope.description === '') { return; }
+
+     if(!$scope.link){
+	  $scope.link = '';
+	}
+
+	backlogs.updateBL($scope.id, {
 		title: $scope.title, 
-		description: $scope.description
-		});
-		$scope.title = '';
-	  $scope.description = '';
-	  $scope.id='';
-	  $scope.editer=false; 
+		description: $scope.description,
+		gitlink: $scope.link
+	});
+
+	$scope.title = '';
+ 	$scope.description = '';
+ 	$scope.link = '';
+  	$scope.id='';
+  	$scope.editer=false; 
   };
   
   $scope.addBacklog = function(){
-	  if(!$scope.title || $scope.title === '' || !$scope.description || $scope.description === '') { return; }
-	  backlogs.create({
+	if(!$scope.title || $scope.title === '' || !$scope.description || $scope.description === '') { return; }
+	 
+	if(!$scope.link){
+	  $scope.link = '';
+	}
+
+  	backlogs.create({
 		title: $scope.title, 
-		description: $scope.description
-		});
-	  $scope.title = '';
-	  $scope.description = '';
-	  $scope.editer=false; 
+		description: $scope.description,
+		gitlink: $scope.link
+	});
+
+  	$scope.title = '';
+  	$scope.description = '';
+   	$scope.link = '';
+  	$scope.editer=false; 
   };
 
   $scope.nouveau = function(){
-		  $scope.editer=true;
-		  $scope.title = "";
-          $scope.description = "";
-		  $scope.id = "";
+  	$scope.editer=true;
+  	$scope.title = '';
+  	$scope.description = '';
+  	$scope.link = '';
+  	$scope.id = '';
   };
 
   $scope.annuler = function(){
-		  $scope.editer=false;
+  	$scope.editer=false;
   };
   
 }]);

@@ -1,92 +1,100 @@
 <!-- La view artículo -->
 <section>
-      <h1 class="page-header">Backlogs existants</h1>
+  <h1 class="page-header">Backlogs existants</h1>
 
-    <div ng-hide="editer">
-                  
-          <div class="panel panel-default"  >
-              <div class="panel-heading">
-                  Backlogs
-              </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                  <div class="table-responsive table-bordered">
-                      <table class="table">
-                          <thead>
-                              <tr>
-                                  <th>#</th>
-                                  <th>Title</th>
-                                  <th>Description</th>
-                                  <th></th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr ng-repeat="backlog in backlogs">
-                                  <td>1</td>
-                                  <td>{{backlog.title}}</td>
-                                  <td>{{backlog.description}}</td>
-                                  <td>
-                                      <a class="testDetail" href="#/userStories/{{backlog._id}}">   
-                                        <button class="btn btn-primary btn-test">Details</button>
-                                      </a>   
-                                      <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>  
-                                      <button class="btn btn-warning" ng-click="editBacklog(backlog)">Modifier</button>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <!-- /.table-responsive -->
-              </div>
-              <!-- /.panel-body -->
-          </div>
-          <button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> 
-    </div>
-    <!-- /.panel -->
-    
-    <div class="panel panel-default" ng-show="editer">
+  <div ng-hide="editer">
+                
+    <div class="panel panel-default"  >
         <div class="panel-heading">
-            Ajouter/Editer un backlog
+            Backlogs
         </div>
+        <!-- /.panel-heading -->
         <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-6">
-                    <form role="form">
-                        <div class="form-group">
-                            <input type="text"
-                              class="form-control"
-                              placeholder="Title"
-                              ng-model="title">
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <input type="text"
-                              class="form-control"
-                              placeholder="Description"
-                              ng-model="description">
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden"
-                              class="form-control"
-                              placeholder="Id"
-                              ng-model="id">
-                            </input>
-                        </div>
-                        <button id="BtnAddBacklog" class="btn btn-primary" ng-click="addBacklog()">Ajouter</button>
-                        <button id="BtnEditBacklog" class="btn btn-info" ng-click="updateBacklog(backlog._id)">Editer</button>
-                        <a class="testDetail" href="#/home">   
-                           <button class="btn btn-warning" ng-click="annuler()">Annuler</button>
-                        </a> 
-                        </div> 
-                    </form>
-                </div>
-                <!-- /.col-lg-6 (nested) -->
-            </div>
-            <!-- /.row (nested) -->
+          <div class="table-responsive table-bordered">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Gitlink</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="backlog in backlogs">
+                  <td>1</td>
+                  <td>{{backlog.title}}</td>
+                  <td>{{backlog.description}}</td>
+                  <td>{{backlog.gitlink}}</td>
+                  <td>
+                    <a class="testDetail" href="#/userStories/{{backlog._id}}">   
+                      <button class="btn btn-primary btn-test">Details</button>
+                    </a>   
+                    <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>  
+                    <button class="btn btn-warning" ng-click="editBacklog(backlog)">Modifier</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <!-- /.table-responsive -->
         </div>
         <!-- /.panel-body -->
     </div>
-    <!-- /.panel -->
+    <button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> 
+  </div>
+  <!-- /.panel -->
+    
+  <div class="panel panel-default" ng-show="editer">
+    <div class="panel-heading">
+      Ajouter/Editer un backlog
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <form role="form">
+            <div class="form-group">
+              <input type="text"
+                class="form-control"
+                placeholder="Title"
+                ng-model="title">
+              </input>
+            </div>
+            <div class="form-group">
+              <input type="text"
+                class="form-control"
+                placeholder="Description"
+                ng-model="description">
+              </input>
+            </div>
+            <div class="form-group">
+              <input type="text"
+                class="form-control"
+                placeholder="Url de votre Github"
+                ng-model="link">
+              </input>
+            </div>
+            <div class="form-group">
+              <input type="hidden"
+                class="form-control"
+                placeholder="Id"
+                ng-model="id">
+              </input>
+            </div>
+            <button id="BtnAddBacklog" class="btn btn-primary" ng-click="addBacklog()">Ajouter</button>
+            <button id="BtnEditBacklog" class="btn btn-info" ng-click="updateBacklog(backlog._id)">Editer</button>
+            <a class="testDetail" href="#/home">   
+               <button class="btn btn-warning" ng-click="annuler()">Annuler</button>
+            </a> 
+          </form>
+        </div>
+        <!-- /.col-lg-6 (nested) -->
+      </div>
+      <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+  <!-- /.panel -->
 
 </section>

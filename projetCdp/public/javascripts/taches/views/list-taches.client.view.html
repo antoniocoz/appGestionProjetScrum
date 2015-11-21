@@ -2,15 +2,14 @@
 <section>
 
       <nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div>
-			  <ul class="nav navbar-nav">
-				<li><a id="aHome" href="#/home">Home</a></li>
-				<li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
+      <div class="container-fluid">
+      <div>
+        <ul class="nav navbar-nav">
+        <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+        </ul>
+      </div>
+      </div>
+    </nav>
 
     <div ng-hide="editer">
                   
@@ -36,8 +35,8 @@
                                   <td>{{tache.description}}</td>
                                   <td>{{tache.dure}}</td>
                                   <td>
-                                     <button class="btn btn-warning btn-edit" data-ng-click="edit(tache);">Modifier</button>
-                                     <button class="btn btn-danger btn-delete" data-ng-click="delete(tache);">Supprimer</button> 
+                                     <button class="btn btn-warning" data-ng-click="edit(tache);">Modifier</button>
+                                     <button class="btn btn-danger" data-ng-click="delete(tache);">Supprimer</button> 
                                   </td>
                               </tr>
                           </tbody>
@@ -48,10 +47,10 @@
               <!-- /.panel-body -->
           </div>
           <a href="#/taches/create/{{usId}}/{{backlogId}}">
-			 <button id="btn-add" class="btn btn-primary">Nouveau</button>
-		  </a>
+       <button class="btn btn-primary btn-add">Nouveau</button>
+      </a>
           <!--<button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> -->
-    </div>		
+    </div>    
 
     <div class="panel panel-default" ng-show="editer">
         <div class="panel-heading">
@@ -61,36 +60,47 @@
             <div class="row">
                 <div class="col-lg-6">
                     <form role="form">
-						<div>
-							<label for="Numero">Numero:</label>
-							<div>
-								<input class="form-control" type="text" data-ng-model="tache.numero" id="numero" placeholder="Numero" required>
-							</div>
-						</div>
-						<div>
-							<label for="description">Description:</label>
-							<div>
-								<textarea class="form-control" data-ng-model="tache.description" id="description" cols="80" rows="10" 
-									placeholder="Description">
-								</textarea>
-							</div>
-						</div>
-						<div>
-							<label for="dure">Duree:</label>
-							<div>
-								<input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Duree" required>
-							</div>
-						</div></br>
-						<div>
-							 <button id="btn-update" class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
-							 <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}"> 
-                 <button id="btn-cancelledEdit" class="btn btn-info" ng-click="cancel()">Annuler</button>
-			         </a> 
-						</div>
-						<!-- El elemento mensaje de error -->
-						<div data-ng-show="error">
-							<strong data-ng-bind="error"></strong>
-						</div>
+            <div>
+              <label for="Numero">Numero:</label>
+              <div>
+                <input class="form-control" type="text" data-ng-model="tache.numero" id="numero" placeholder="Numero" required>
+              </div>
+            </div>
+            <div>
+              <label for="description">Description:</label>
+              <div>
+                <textarea class="form-control" data-ng-model="tache.description" id="description" cols="80" rows="10" 
+                  placeholder="Description">
+                </textarea>
+              </div>
+            </div>
+            <div>
+              <label for="dure">Duree:</label>
+              <div>
+                <input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Duree" required>
+              </div>
+            </div>
+            <div>
+              <label for="Etat">Etat:</label>
+              <div>
+                      <select class="form-control" data-ng-model="tache.etat" id="etat" placeholder="Etat" required>
+                          <option value="0">To Do</option>
+                          <option value="1">Doing</option>
+                          <option value="2">Done</option>
+                      </select>
+              </div>
+            </div>
+            </br>
+            <div>
+               <button class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
+               <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}"> 
+                         <button class="btn btn-info" ng-click="annuler()">Annuler</button>
+               </a> 
+            </div>
+            <!-- El elemento mensaje de error -->
+            <div data-ng-show="error">
+              <strong data-ng-bind="error"></strong>
+            </div>
                     </form>
                 </div>
                 <!-- /.col-lg-6 (nested) -->

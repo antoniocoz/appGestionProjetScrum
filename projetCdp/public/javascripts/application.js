@@ -61,6 +61,20 @@ function($stateProvider, $urlRouterProvider) {
 		}]
 	  }
 	})
+	.state('taches/kanban/p', {
+	  url: '/taches/kanban/p/:spId/:idBL',
+	  templateUrl: 'javascripts/taches/views/view-taches.client.view.html',
+	  controller: 'tacheController',
+	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
+	  resolve: {
+		tachesPromise: ['$stateParams','tacheService', function($stateParams, tacheService) {
+		  //console.log("spId"+$stateParams.spId);
+		  //console.log(tacheService.getTachesBySprints($stateParams.spId));
+		  tacheService.setIdBl($stateParams.idBL);
+		  return tacheService.getTachesBySprints($stateParams.spId);
+		}]
+	  }
+	})	
 	.state('sprints', {
 	  url: '/sprints/:id',
 	  templateUrl: 'javascripts/sprints/views/sprints.client.view.html',

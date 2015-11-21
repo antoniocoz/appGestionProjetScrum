@@ -7,7 +7,8 @@ var Tacheschema = new mongoose.Schema({
   delaiplustot: {type: Number, default: 0},
   delaiplustard: {type: Number, default: 0},
   usId: String,
-  tacheId:[]
+  tacheId:[],
+  etat:{type: Number, default: 0}
 });
 
 mongoose.model('Tache', Tacheschema);

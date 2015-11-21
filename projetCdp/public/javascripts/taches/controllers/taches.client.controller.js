@@ -21,7 +21,8 @@ function($scope, $location, tacheService){
 			delaiplustard:0,
 			dure: $scope.dure,
 			usId: $scope.usId,
-			tacheId:[]
+			tacheId:[],
+			etat:0
 		  });
 		  $scope.numero = '';
 		  $scope.description = '';
@@ -56,7 +57,7 @@ function($scope, $location, tacheService){
 		$scope.editer=false;
 	};
 
-	$scope.cancel = function(){
+	$scope.annuler = function(){
 		$scope.editer=false;
-	}
+	};
 }]);

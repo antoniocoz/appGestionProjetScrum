@@ -36,8 +36,8 @@
                                   <td>{{tache.description}}</td>
                                   <td>{{tache.dure}}</td>
                                   <td>
-                                     <button class="btn btn-warning" data-ng-click="edit(tache);">Modifier</button>
-                                     <button class="btn btn-danger" data-ng-click="delete(tache);">Supprimer</button> 
+                                     <button class="btn btn-warning btn-edit" data-ng-click="edit(tache);">Modifier</button>
+                                     <button class="btn btn-danger btn-delete" data-ng-click="delete(tache);">Supprimer</button> 
                                   </td>
                               </tr>
                           </tbody>
@@ -48,7 +48,7 @@
               <!-- /.panel-body -->
           </div>
           <a href="#/taches/create/{{usId}}/{{backlogId}}">
-			 <button class="btn btn-primary btn-add">Nouveau</button>
+			 <button id="btn-add" class="btn btn-primary">Nouveau</button>
 		  </a>
           <!--<button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> -->
     </div>		
@@ -82,10 +82,10 @@
 							</div>
 						</div></br>
 						<div>
-							 <button class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
+							 <button id="btn-update" class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
 							 <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}"> 
-			                   <button class="btn btn-info" ng-click="annuler()">Annuler</button>
-			                 </a> 
+                 <button id="btn-cancelledEdit" class="btn btn-info" ng-click="cancel()">Annuler</button>
+			         </a> 
 						</div>
 						<!-- El elemento mensaje de error -->
 						<div data-ng-show="error">

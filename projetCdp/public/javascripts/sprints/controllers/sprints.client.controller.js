@@ -103,8 +103,7 @@ function($scope, sprints, userStories){
 	};
 	$scope.cancel = function(){
           $scope.edit = false;
-          $scope.updateUserStories = false;
-
+          $scope.updateUserStories = false;         
 	};
 
 }]);

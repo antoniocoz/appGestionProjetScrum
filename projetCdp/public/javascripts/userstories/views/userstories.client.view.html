@@ -48,7 +48,7 @@
               </div>
               <!-- /.panel-body -->
           </div>
-          <button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> 
+          <button id="btn-addUS" class="btn btn-primary" ng-click="nouveau()">Nouveau</button></br> 
     </div>		
 
     <div class="panel panel-default" ng-show="editer">
@@ -100,7 +100,7 @@
 						<button id="BtnAddUserstory" class="btn btn-primary" ng-click="addUserStory()">Ajouter</button>
 						<button id="BtnEditUserstory" class="btn btn-info" ng-click="updateUserStory(us._id)">Editer</button>
 						<a class="testDetail" href="#/userStories/{{backlog._id}}">   
-				           <button class="btn btn-warning" ng-click="annuler()">Annuler</button>
+				           <button id="btn-cancelled" class="btn btn-warning" ng-click="annuler()">Annuler</button>
 				        </a> 
                     </form>
                 </div>

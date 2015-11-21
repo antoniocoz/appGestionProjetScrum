@@ -30,7 +30,7 @@
                           <tbody>
 			  					<tr ng-repeat="sp in sprints">
                                   <td>{{sp.title}}</td>
-								  <td><button class="btn btn-warning" ng-click="editSprint(sp)">Modifier</button>
+								  <td><button class="btn btn-warning btn-editSprint" ng-click="editSprint(sp)">Modifier</button>
 			  					  <button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)">Ajouter US</button>
 			   					  <button class="btn btn-danger" ng-click="deleteSprint(sp._id)">Supprimer</button> 
 			   					  </td>
@@ -62,7 +62,7 @@
               </div>
               <!-- /.panel-body -->
           </div>
-          <button class="btn btn-primary btn-test" ng-click="newSprint()">Nouveau</button></br> 
+          <button id="btn-addSprint" class="btn btn-primary" ng-click="newSprint()">Nouveau</button></br> 
     </div>
 
 
@@ -78,9 +78,9 @@
 		  				<select multiple ng-model="uss" class="form-control" ng-options="us as us.body + ' priority : ' + us.priority for us in userStories">
 			  			</select>
 			  			<br>
-			  			<button class="btn btn-primary btn-addUSclick" ng-click="addUS()">Ajouter</button>
+			  			<button id="btn-addUSclick" class="btn btn-primary" ng-click="addUS()">Ajouter</button>
 			  			 <a class="testDetail" href="#/sprints/{{us._id}}">   
-			                <button class="btn btn-warning" ng-click="cancel()">Annuler</button>
+			                <button id="btn-cancelledAddUs" class="btn btn-warning" ng-click="cancel()">Annuler</button>
 			             </a> 
 			  		</form>
 				</div>
@@ -114,11 +114,11 @@
 								</input>
 						  </div>
 						</div>
-						<button class="btn btn-primary btn-add" ng-click="addSprint()">Ajouter</button>
-						<button class="btn btn-info btn-edit" ng-click="updateSprint(us._id)">Editer</button> 
+						<button id="btn-add" class="btn btn-primary" ng-click="addSprint()">Ajouter</button>
+						<button id="btn-edit" class="btn btn-info" ng-click="updateSprint(us._id)">Editer</button> 
 
 			                <a class="testDetail" href="#/sprints/{{us._id}}">   
-			                <button class="btn btn-warning" ng-click="cancel()">Annuler</button>
+			                <button id="btn-cancelledSprint" class="btn btn-warning" ng-click="cancel()">Annuler</button>
 			                </a> 
                     </form>
                 </div>

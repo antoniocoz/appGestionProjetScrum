@@ -1,19 +1,26 @@
 describe("Sprint", function() {
+    var url;
 
     describe("setUp", function (){
         it("Initialize the sprint test", function() {
             browser.get('/#/home');
+            
+            element(by.id('btn-addBl')).click();
 
             element(by.model('title')).clear().sendKeys("Testsprint");
             element(by.model('description')).clear().sendKeys("Testsprint");
             element(by.id('BtnAddBacklog')).click();
 
-            $$('button.btn-test').last().click();
+            $$('button.btn-detail').last().click();
+
+            element(by.id('btn-addUS')).click();
 
             element(by.model('body')).clear().sendKeys("Test");
             element(by.model('priority')).clear().sendKeys("2");
             element(by.cssContainingText('option', '5')).click();
             element(by.id('BtnAddUserstory')).click();
+
+            element(by.id('btn-addUS')).click();
 
             element(by.model('body')).clear().sendKeys("Object");
             element(by.model('priority')).clear().sendKeys("3");
@@ -24,21 +31,41 @@ describe("Sprint", function() {
 
     describe("add", function (){
         it("should add a sprint", function(){
+            url = element(by.id('aSprint')).getAttribute("href");
             element(by.id('aSprint')).click();
+            element(by.id('btn-addSprint')).click();
             element(by.model('title')).clear().sendKeys("Test");
-            $('button.btn-add').click();
+            element(by.id('btn-add')).click();
 
             expect(element.all(by.repeater('sp in sprints').column('sp.title')).last().getText()).toEqual('Test'); 
         });
     });
 
+    describe("add_canceled", function (){
+        it("should cancel an adding of a sprint", function(){
+            element(by.id('btn-addSprint')).click();
+            element(by.id('btn-cancelledSprint')).click();
+
+            expect(browser.getCurrentUrl()).toBe(url);      
+        });
+    });
+
     describe("update", function () {
-         it("should update a sprint", function(){
-            $$('button.btn-warning').last().click();
+        it("should update a sprint", function(){
+            $$('button.btn-editSprint').last().click();
             element(by.model('title')).clear().sendKeys("Test Update, impossible que le nom d\'un titre soit ça xrtrz");
-            $('button.btn-edit').click();
+            element(by.id('btn-edit')).click();
 
             expect(element.all(by.repeater('sp in sprints').column('sp.title')).last().getText()).toEqual('Test Update, impossible que le nom d\'un titre soit ça xrtrz'); 
+        });
+    });
+
+    describe("update_canceled", function (){
+        it("should cancel an updating of a sprint", function(){
+           $$('button.btn-editSprint').last().click();
+            element(by.id('btn-cancelledSprint')).click();
+
+            expect(browser.getCurrentUrl()).toBe(url);      
         });
     });
     
@@ -47,10 +74,18 @@ describe("Sprint", function() {
             $$('button.btn-addUS').last().click();
             element(by.cssContainingText('option', 'Test')).click();
             element(by.cssContainingText('option', 'Object')).click();
-            $('button.btn-addUSclick').click();
+            element(by.id('btn-addUSclick')).click();
             
             expect(element.all(by.repeater('us in userStories').column('us.body')).last().getText()).toEqual('Object');   
+        });
+    });
 
+    describe("addUS_canceled", function (){
+        it("should cancel an adding of an US in a sprint", function(){
+            $$('button.btn-addUS').last().click();
+            element(by.id('btn-cancelledAddUs')).click();
+
+            expect(browser.getCurrentUrl()).toBe(url);      
         });
     });
 
@@ -66,8 +101,9 @@ describe("Sprint", function() {
         it("should delete a sprint", function(){
             $$('button.btn-deleteUS').last().click();
 
+            element(by.id('btn-addSprint')).click();
             element(by.model('title')).clear().sendKeys("Test de suppression haha");
-            $('button.btn-add').click();
+            element(by.id('btn-add')).click();
 
             $$('button.btn-danger').last().click();
 

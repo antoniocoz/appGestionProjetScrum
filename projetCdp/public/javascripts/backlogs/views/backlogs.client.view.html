@@ -29,10 +29,10 @@
                   <td>{{backlog.gitlink}}</td>
                   <td>
                     <a class="testDetail" href="#/userStories/{{backlog._id}}">   
-                      <button class="btn btn-primary btn-test">Details</button>
+                      <button class="btn btn-primary btn-detail">Details</button>
                     </a>   
                     <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>  
-                    <button class="btn btn-warning" ng-click="editBacklog(backlog)">Modifier</button>
+                    <button class="btn btn-warning btn-edit" ng-click="editBacklog(backlog)">Modifier</button>
                   </td>
                 </tr>
               </tbody>
@@ -42,7 +42,7 @@
         </div>
         <!-- /.panel-body -->
     </div>
-    <button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> 
+    <button id="btn-addBl" class="btn btn-primary" ng-click="nouveau()">Nouveau</button></br> 
   </div>
   <!-- /.panel -->
     
@@ -84,8 +84,8 @@
             </div>
             <button id="BtnAddBacklog" class="btn btn-primary" ng-click="addBacklog()">Ajouter</button>
             <button id="BtnEditBacklog" class="btn btn-info" ng-click="updateBacklog(backlog._id)">Editer</button>
-            <a class="testDetail" href="#/home">   
-               <button class="btn btn-warning" ng-click="annuler()">Annuler</button>
+            <a href="#/home">   
+               <button id="btn-cancelled" class="btn btn-warning" ng-click="annuler()">Annuler</button>
             </a> 
           </form>
         </div>

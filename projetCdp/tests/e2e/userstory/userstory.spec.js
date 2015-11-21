@@ -4,17 +4,21 @@ describe("Userstory", function() {
         it("Initialize the Userstory test", function() {
             browser.get('/#/home');
 
+            element(by.id('btn-addBl')).click();
+
             element(by.model('title')).clear().sendKeys("TestUS");
             element(by.model('description')).clear().sendKeys("TestUS");
             element(by.id('BtnAddBacklog')).click();
 
-            var url = $$('a.testDetail').last().getAttribute("href")
-            $$('button.btn-test').last().click();
+            $$('button.btn-detail').last().click();
         });
     });
 
     describe("add", function (){
         it("should add a Userstory", function(){
+
+            element(by.id('btn-addUS')).click();
+
             element(by.model('body')).clear().sendKeys("Test");
             element(by.model('priority')).clear().sendKeys("2");
             element(by.cssContainingText('option', '5')).click();
@@ -28,7 +32,7 @@ describe("Userstory", function() {
 
     describe("update", function () {
          it("should update a Userstory", function(){
-            $$('button.btn-warning').last().click();
+            $$('button.btn-edit').last().click();
             element(by.model('body')).clear().sendKeys("Test, impossible de mettre ça en d'un us ahah");
             element(by.model('priority')).clear().sendKeys("3");
             element(by.cssContainingText('option', '8')).click();
@@ -42,6 +46,7 @@ describe("Userstory", function() {
 
     describe("delete", function (){
         it("should delete a Userstory", function(){
+            element(by.id('btn-addUS')).click();
             element(by.model('body')).clear().sendKeys("Test");
             element(by.model('priority')).clear().sendKeys("2");
             element(by.cssContainingText('option', '5')).click();

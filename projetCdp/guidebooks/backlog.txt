@@ -5,8 +5,8 @@ La liste des backlogs est par défault la page d'accueil.
 
 **Ajout d'un backlog**
 
-Pour ajouter un backlog, il faut renseigner les différents champs
-du formulaire. Puis cliquer sur le bouton ajouter.
+Pour ajouter un backlog, il faut cliquer sur nouveau, puis renseigner les 
+différents champs du formulaire. Puis cliquer sur le bouton ajouter.
 
 Il sera ensuite automatiquement ajouter à la liste des backlogs existants.
 

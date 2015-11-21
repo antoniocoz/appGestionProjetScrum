@@ -10,6 +10,7 @@ Au préalable, il faut avoir créé un backlog.
 Cliquer sur le bouton détail du backlog souhaité.
 Si aucune userstory n'est créée, profitez en pour le faire maintenant.
 Cliquer sur sprints qui se trouve sur le bandeau de navigation.
+Cliquer sur nouveau.
 Remplir le champs, puis cliquer sur le bouton ajouter.
 
 Le sprint sera automatiquement ajouter à la liste des sprints.
@@ -22,11 +23,11 @@ Changer la valeur du champ qui se trouve dans le même formulaire que la créati
 
 La modification sera pris en compte instantanément.
 
-**Ajouter d'une userstory au backlog**
+**Ajouter une userstory au backlog**
 
 Pour ajouter des userstories au sprint il faut cliquer sur le bouton ajouter US du sprint souhaité.
 
-Ensuite, selectionner les us souhaiter dans le champ de sélection, puis cliquer sur ajouter.
+Ensuite, selectionner les us souhaitées dans le champ de sélection, puis cliquer sur ajouter.
 
 Les userstories seront automatiquement ajouter aux sprints.
 

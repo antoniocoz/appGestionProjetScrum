@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'mean';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints', 'users']);
 
 //Setup a state called home
 mainApplicationModule.config([
@@ -70,6 +70,18 @@ function($stateProvider, $urlRouterProvider) {
 			sprints.setIdBl($stateParams.id);
 			sprints.getAllUS($stateParams.id);
 		  return sprints.getAll($stateParams.id);
+		}]
+
+	  }
+	})
+	.state('users', {
+	  url: '/users/:id',
+	  templateUrl: 'javascripts/users/views/users.client.view.html',
+	  controller: 'UserCtrl',
+	  resolve: {
+		usersPromise: ['$stateParams', 'users', function($stateParams, users) {
+			users.setIdBl($stateParams.id);
+		  return users.getAll($stateParams.id);
 		}]
 
 	  }

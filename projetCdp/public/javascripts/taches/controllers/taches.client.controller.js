@@ -55,4 +55,8 @@ function($scope, $location, tacheService){
 		//$scope.tache={};
 		$scope.editer=false;
 	};
+
+	$scope.cancel = function(){
+		$scope.editer=false;
+	}
 }]);

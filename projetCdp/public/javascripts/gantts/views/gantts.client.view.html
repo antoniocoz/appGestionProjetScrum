@@ -1,0 +1,70 @@
+<section>
+	  
+	  <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div>
+			  <ul class="nav navbar-nav">
+				<li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+	  <div ng-hide="edit">
+                  
+          <div class="panel panel-default"  >
+
+              <div class="panel-heading">
+	  			Développeurs, tâches et diagramme de GANTT
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+
+
+              		<div>
+              			<div google-chart chart="chart" style="{{chart.cssStyle}}"/>
+              		</div>
+
+                  <div class="table-responsive table-bordered">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Prenom</th>
+                                  <th>Nom</th>
+                                  <th>Contact</th>
+                                  <th>Tâches</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+			  					<tr ng-repeat="user in users">
+                                  <td>{{user.forename}}</td>
+                                  <td>{{user.surname}}</td>
+                                  <td>{{user.contact}}</td>
+                                  <td>
+                                      <table   class="table table-responsive table-bordered">
+			  							<thead>
+											<tr>
+											<th>Description</th>
+											<th>Durée</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr  ng-repeat="task in tasks" ng-if='task.owner==user._id'>
+												<td>{{task.description}}</td>
+												<td>{{task.duree}}</td>
+											</tr>
+										</tbody>
+			  							</table>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- /.table-responsive -->
+              </div>
+              <!-- /.panel-body -->
+          </div>
+    </div>
+
+    <!-- /.panel -->	  
+
+</section>

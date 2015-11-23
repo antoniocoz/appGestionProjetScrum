@@ -53,9 +53,6 @@ function($stateProvider, $urlRouterProvider) {
 	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
 	  resolve: {
 		tachesPromise: ['$stateParams', 'tacheService', function($stateParams, tacheService) {
-		  //console.log($stateParams.usId);
-		  //return tacheService.getAll($stateParams.usId);
-		  console.log($stateParams.idBL);
 		  tacheService.setIdBl($stateParams.idBL);
 		  tacheService.setIdUs($stateParams.usId);
 		}]
@@ -68,13 +65,23 @@ function($stateProvider, $urlRouterProvider) {
 	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
 	  resolve: {
 		tachesPromise: ['$stateParams','tacheService', function($stateParams, tacheService) {
-		  //console.log("spId"+$stateParams.spId);
-		  //console.log(tacheService.getTachesBySprints($stateParams.spId));
 		  tacheService.setIdBl($stateParams.idBL);
 		  return tacheService.getTachesBySprints($stateParams.spId);
 		}]
 	  }
-	})	
+	})
+	.state('taches/pert', {
+	  url: '/taches/pert/:spId/:idBL',
+	  templateUrl: 'javascripts/taches/views/pert-taches.client.view.html',
+	  controller: 'tacheController',
+	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
+	  resolve: {
+		tachesPromise: ['$stateParams','tacheService', function($stateParams, tacheService) {
+		  tacheService.setIdBl($stateParams.idBL);
+		  return tacheService.getTachesBySprints($stateParams.spId);
+		}]
+	  }
+	})		
 	.state('sprints', {
 	  url: '/sprints/:id',
 	  templateUrl: 'javascripts/sprints/views/sprints.client.view.html',

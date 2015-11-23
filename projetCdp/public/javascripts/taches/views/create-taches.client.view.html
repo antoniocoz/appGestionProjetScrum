@@ -1,16 +1,15 @@
-<!-- Crear la View Articles -->
 <section>
 
-	<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div>
-			  <ul class="nav navbar-nav">
-			  	<li><a id="aHome" href="#/home">Home</a></li>
-				<li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a id="aHome" href="#/home">Home</a></li>
+                    <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -20,36 +19,35 @@
             <div class="row">
                 <div class="col-lg-6">
                     <form role="form">
-						<div>
-							<label for="Numero">Numero:</label>
-							<div>
-								<input class="form-control" type="text" data-ng-model="numero" id="numero" placeholder="Numero" required>
-							</div>
-						</div>
-						<div>
-							<label for="description">Description:</label>
-							<div>
-								<textarea class="form-control" data-ng-model="description" id="description" cols="80" rows="10" 
-									placeholder="Description">
-								</textarea>
-							</div>
-						</div>
-						<div>
-							<label for="dure">Duree:</label>
-							<div>
-								<input class="form-control" type="text" data-ng-model="dure" id="dure" placeholder="Duree" required>
-							</div>
-						</div></br>
-						<div>
-							<button id="btn-add" class="btn btn-primary" ng-click="create()">Ajouter</button>					
-							<a class="testDetail" href="#/taches/{{usId}}/{{backlogId}}"> 
-			                   <button id="btn-cancelled" class="btn btn-info" >Annuler</button>
-			                </a> 
-						</div>
-						<!-- El elemento mensaje de error -->
-						<div data-ng-show="error">
-							<strong data-ng-bind="error"></strong>
-						</div>
+                        <div>
+                            <label for="Numero">Numero:</label>
+                            <div>
+                                <input class="form-control" type="text" data-ng-model="numero" id="numero" placeholder="Numero" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="description">Description:</label>
+                            <div>
+                                <textarea class="form-control" data-ng-model="description" id="description" cols="80" rows="10" placeholder="Description">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="dure">Duree:</label>
+                            <div>
+                                <input class="form-control" type="text" data-ng-model="dure" id="dure" placeholder="Duree" required>
+                            </div>
+                        </div>
+                        </br>
+                        <div>
+                            <button id="btn-add" class="btn btn-primary" ng-click="create()">Ajouter</button>
+                            <a class="testDetail" href="#/taches/{{usId}}/{{backlogId}}">
+                                <button id="btn-cancelled" class="btn btn-info">Annuler</button>
+                            </a>
+                        </div>
+                        <div data-ng-show="error">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
                     </form>
                 </div>
                 <!-- /.col-lg-6 (nested) -->

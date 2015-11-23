@@ -1,126 +1,128 @@
 <section>
-	  
-	  <nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div>
-			  <ul class="nav navbar-nav">
-			  	<li><a id="aHome" href="#/home">Home</a></li>
-				<li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
-	  <div ng-hide="edit">
-                  
-          <div class="panel panel-default"  >
-              <div class="panel-heading">
-	  			Sprints du backlog
-              </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                  <div class="table-responsive table-bordered">
-                      <table class="table">
-                          <thead>
-                              <tr>
-                                  <th>Sprint</th>
-                                  <th>Option</th>
-                                  <th>User Stories</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-			  					<tr ng-repeat="sp in sprints">
-                                  <td>{{sp.title}}</td>
-								  <td><button class="btn btn-warning btn-editSprint" ng-click="editSprint(sp)">Modifier</button>
-			  					  <button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)">Ajouter US</button>
-			   					  <button class="btn btn-danger" ng-click="deleteSprint(sp._id)">Supprimer</button> 
-			   					  <button class="btn btn-primary btn-showPert" ng-click="showPert(sp._id)">Pert</button> 
-                                  <a class="testDetail" href="#/taches/kanban/p/{{sp._id}}/{{sp.backlog}}"> 
-			   					    <button class="btn btn-primary">Kanban</button>
-                                  </a> 
-			   					  </td>
-                                  <td>
-                                      <table   class="table table-responsive table-bordered">
-			  							<thead>
-											<tr>
-											<th>Titre</th>
-											<th>Priority</th>
-											<th>Difficulty</th>
-											<th>Options</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr  ng-repeat="us in userStories" ng-if='us.sprint==sp._id'>
-												<td>{{us.body}}</td>
-												<td>{{us.priority}}</td>
-												<td>{{us.difficulty}}</td>
-												<td><button class="btn btn-danger btn-deleteUS" ng-click="removeUserStory(us)">Supprimer</button></td>
-											</tr>
-										</tbody>
-			  							</table>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <!-- /.table-responsive -->
-              </div>
-              <!-- /.panel-body -->
-          </div>
-            <button id="btn-addSprint" class="btn btn-primary" ng-click="newSprint()">Nouveau</button></br> 
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a id="aHome" href="#/home">Home</a></li>
+                    <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ng-hide="edit">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Sprints du backlog
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sprint</th>
+                                <th>Option</th>
+                                <th>User Stories</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="sp in sprints">
+                                <td>{{sp.title}}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-editSprint" ng-click="editSprint(sp)">Modifier</button>
+                                    <button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)">Ajouter US</button>
+                                    <button class="btn btn-danger" ng-click="deleteSprint(sp._id)">Supprimer</button>
+                                    <a class="testDetail" href="#/taches/pert/{{sp._id}}/{{sp.backlog}}">
+                                        <button class="btn btn-primary btn-showPert" ng-click="showPert(sp._id)">Pert</button>
+                                    </a>
+                                    <a class="testDetail" href="#/taches/kanban/p/{{sp._id}}/{{sp.backlog}}">
+                                        <button class="btn btn-primary">Kanban</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <table class="table table-responsive table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Titre</th>
+                                                <th>Priority</th>
+                                                <th>Difficulty</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="us in userStories" ng-if='us.sprint==sp._id'>
+                                                <td>{{us.body}}</td>
+                                                <td>{{us.priority}}</td>
+                                                <td>{{us.difficulty}}</td>
+                                                <td>
+                                                    <button class="btn btn-danger btn-deleteUS" ng-click="removeUserStory(us)">Supprimer</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <button id="btn-addSprint" class="btn btn-primary" ng-click="newSprint()">Nouveau</button>
+        </br>
     </div>
 
 
     <div class="panel panel-default" ng-show="updateUserStories">
         <div class="panel-heading">
-		Ajouter/Editer une User Story
-		</div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-6">
-			  		<form role="form">
-			  			<label for="sel1">User Stories (maintenir Ctrl pour selectionner plusieurs items) :</label>
-		  				<select multiple ng-model="uss" class="form-control" ng-options="us as us.body + ' priority : ' + us.priority for us in userStories">
-			  			</select>
-			  			<br>
-			  				<button id="btn-addUSclick" class="btn btn-primary" ng-click="addUS()">Ajouter</button>			  			 <a class="testDetail" href="#/sprints/{{us._id}}">   
-			                <button id="btn-cancelledAddUs" class="btn btn-warning" ng-click="cancel()">Annuler</button>			     </a> 
-			  		</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-    <!-- /.panel -->
-
-	<div class="panel panel-default" ng-show="(edit && !updateUserStories)">
-        <div class="panel-heading">
-		Ajouter/Editer un sprint
+            Ajouter/Editer une User Story
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-6">
                     <form role="form">
-                    	 <div class="form-group">
-						  <input type="text"
-							  class="form-control"
-							  placeholder="Titre"
-							  ng-model="title">
-						  </input>
-					 	 <br>
+                        <label for="sel1">User Stories (maintenir Ctrl pour selectionner plusieurs items) :</label>
+                        <select multiple ng-model="uss" class="form-control" ng-options="us as us.body + ' priority : ' + us.priority for us in userStories">
+                        </select>
+                        <br>
+                        <button id="btn-addUSclick" class="btn btn-primary" ng-click="addUS()">Ajouter</button>
+                        <a class="testDetail" href="#/sprints/{{us._id}}">
+                            <button id="btn-cancelledAddUs" class="btn btn-warning" ng-click="cancel()">Annuler</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-						  <div class="form-group">
-								<input type="hidden"
-									class="form-control"
-									placeholder="Id"
-									ng-model="id">
-								</input>
-						  </div>
-						</div>
-							<button id="btn-add" class="btn btn-primary" ng-click="addSprint()">Ajouter</button>
-							<button id="btn-edit" class="btn btn-info" ng-click="updateSprint(us._id)">Editer</button>
-						    <a class="testDetail" href="#/sprints/{{us._id}}">   
-			                	<button id="btn-cancelledSprint" class="btn btn-warning" ng-click="cancel()">Annuler</button>
-			                </a> 
+    <!-- /.panel -->
+
+    <div class="panel panel-default" ng-show="(edit && !updateUserStories)">
+        <div class="panel-heading">
+            Ajouter/Editer un sprint
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Titre" ng-model="title">
+                            </input>
+                            <br>
+
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" placeholder="Id" ng-model="id">
+                                </input>
+                            </div>
+                        </div>
+                        <button id="btn-add" class="btn btn-primary" ng-click="addSprint()">Ajouter</button>
+                        <button id="btn-edit" class="btn btn-info" ng-click="updateSprint(us._id)">Editer</button>
+                        <a class="testDetail" href="#/sprints/{{us._id}}">
+                            <button id="btn-cancelledSprint" class="btn btn-warning" ng-click="cancel()">Annuler</button>
+                        </a>
                     </form>
                 </div>
                 <!-- /.col-lg-6 (nested) -->
@@ -130,6 +132,6 @@
         <!-- /.panel-body -->
     </div>
     <!-- /.panel -->
-		  
+
 
 </section>

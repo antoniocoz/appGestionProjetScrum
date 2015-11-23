@@ -76,7 +76,7 @@ describe("Task", function() {
         it("should delete a task", function(){
             element(by.id('btn-add')).click();
 
-            element(by.model('numero')).clear().sendKeys("1");
+            element(by.model('numero')).clear().sendKeys("2");
             element(by.model('description')).clear().sendKeys("Test de suppression haha");
             element(by.model('dure')).clear().sendKeys("3");
             element(by.id('btn-add')).click();

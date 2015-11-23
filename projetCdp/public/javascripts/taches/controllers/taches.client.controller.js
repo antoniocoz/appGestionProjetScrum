@@ -10,8 +10,21 @@ function($scope, $location, tacheService){
 
     $scope.backlogId = tacheService.getIdBl();
 
+	$scope.$watch('selected', function(nowSelected){
+	  	$scope.tache.tacheId = [];
+
+	  	if( ! nowSelected){return;}
+
+	  	angular.forEach(nowSelected, function(val){
+	  		$scope.tache.tacheId.push(val._id);
+	  	});
+
+	  	console.log("test");
+
+	  });
+
 	$scope.create = function(){
-	      if($scope.numero === '' || !$scope.description || !$scope.dure) { 
+	      if($scope.numero === '' || !$scope.numero || !$scope.description || !$scope.dure || $scope.dure === '') { 
 	      	return; 
 	      }
 		  tacheService.create({
@@ -23,10 +36,10 @@ function($scope, $location, tacheService){
 			usId: $scope.usId,
 			tacheId:[]
 		  });
+  		  $location.path('taches/' + $scope.usId+'/'+$scope.backlogId);
 		  $scope.numero = '';
 		  $scope.description = '';
 		  $scope.dure = '';
-		  $location.path('taches/' + $scope.usId+'/'+$scope.backlogId);
 	};
 	
 	$scope.delete = function(tache){
@@ -54,5 +67,10 @@ function($scope, $location, tacheService){
 		tacheService.update(tacheId,tache);
 		//$scope.tache={};
 		$scope.editer=false;
+		console.log("tacheId length : "+$scope.tache.tacheId.length);
+		console.log("tacheId 1 : "+JSON.stringify($scope.tache.tacheId[1]));
+		console.log("tacheId 0 : "+JSON.stringify($scope.tache.tacheId[0]));
+
+
 	};
 }]);

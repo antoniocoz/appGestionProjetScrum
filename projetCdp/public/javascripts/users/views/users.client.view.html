@@ -1,0 +1,105 @@
+<section>
+	  <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div>
+			  <ul class="nav navbar-nav">
+				<li><a id="aHome" href="#/home">Home</a></li>
+				<li><a id="aSprint" href="#/userStories/{{backlogId}}">UserStories</a></li>
+				<li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+
+    <div ng-hide="editer">
+
+    	<div class="panel panel-default"  >
+              <div class="panel-heading">
+                  Liste des personnes travaillant sur le projet
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                  <div class="table-responsive table-bordered">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Prenom</th>
+                                  <th>Nom</th>
+                                  <th>Contact</th>
+                                  <th>Options</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr ng-repeat="user in users">
+                                  <td>{{user.forename}}</td>
+                                  <td>{{user.surname}}</td>
+                                  <td>{{user.contact}}</td>
+                                  <td>
+									  <button class="btn btn-danger btn-delete" ng-click="deleteUser(user._id, user.backlog)">Supprimer</button>  
+									  <button class="btn btn-warning btn-edit" ng-click="editUser(user)">Modifier</button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- /.table-responsive -->
+              </div>
+              <!-- /.panel-body -->
+          </div>
+
+          <button class="btn btn-primary btn-test" ng-click="new()">Nouveau</button></br> 
+    </div>		
+
+    <div class="panel panel-default" ng-show="editer">
+        <div class="panel-heading">
+            Ajouter une personne au projet
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form role="form">
+				       <div class="form-group">
+				       	<label for="sel1">Prénom:</label>
+						  <input type="text"
+							  class="form-control"
+							  placeholder="Forename"
+							  ng-model="forename">
+						  </input>
+						  <br>
+						  <label for="sel1">Nom:</label>
+						  <input type="text"
+							  class="form-control"
+							  placeholder="Surname"
+							  ng-model="surname">
+						  </input>
+						  <br>
+						  <label for="sel1">Contact Email:</label>
+						  <input type="text"
+							  class="form-control"
+							  placeholder="Contact"
+							  ng-model="contact">
+						  </input>
+						  <br>
+						  <div class="form-group">
+								<input type="hidden"z
+									class="form-control"
+									placeholder="Id"
+									ng-model="id">
+								</input>
+						  </div>
+						</div>
+						<button id="BtnAddUserstory" class="btn btn-primary" ng-click="addUser()">Ajouter</button>
+						<button id="BtnEditUserstory" class="btn btn-info" ng-click="updateUser(user._id)">Editer</button>
+						<a class="testDetail" href="#/users/{{backlogId}}">
+				           <button class="btn btn-warning" ng-click="cancel()">Annuler</button>
+				        </a> 
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+            <!-- /.row (nested) -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+</section>

@@ -34,7 +34,8 @@ function($scope, $location, tacheService){
 			delaiplustard:0,
 			dure: $scope.dure,
 			usId: $scope.usId,
-			tacheId:[]
+			tacheId:[],
+			etat:0
 		  });
   		  $location.path('taches/' + $scope.usId+'/'+$scope.backlogId);
 		  $scope.numero = '';
@@ -72,5 +73,9 @@ function($scope, $location, tacheService){
 		console.log("tacheId 0 : "+JSON.stringify($scope.tache.tacheId[0]));
 
 
+	};
+
+	$scope.annuler = function(){
+		$scope.editer=false;
 	};
 }]);

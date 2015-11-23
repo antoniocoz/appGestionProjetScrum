@@ -11,8 +11,8 @@ backlog.
 
 **Ajouter une user story**
 
-Pour ajouter une user story, il faut remplir tout les champs du formulaire 
-et cliquer sur ajouter.
+Pour ajouter une user story, il faut cliquer sur nouveau puis remplir tout 
+les champs du formulaire et cliquer sur ajouter.
 
 Elle sera automatiquement ajouter à la liste des user stories.
 

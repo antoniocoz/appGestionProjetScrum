@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'mean';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints', 'users']);
 
 //Setup a state called home
 mainApplicationModule.config([
@@ -61,6 +61,20 @@ function($stateProvider, $urlRouterProvider) {
 		}]
 	  }
 	})
+	.state('taches/kanban/p', {
+	  url: '/taches/kanban/p/:spId/:idBL',
+	  templateUrl: 'javascripts/taches/views/view-taches.client.view.html',
+	  controller: 'tacheController',
+	  // anytime our backlogs state is entered, we will automatically query all US from a backlog
+	  resolve: {
+		tachesPromise: ['$stateParams','tacheService', function($stateParams, tacheService) {
+		  //console.log("spId"+$stateParams.spId);
+		  //console.log(tacheService.getTachesBySprints($stateParams.spId));
+		  tacheService.setIdBl($stateParams.idBL);
+		  return tacheService.getTachesBySprints($stateParams.spId);
+		}]
+	  }
+	})	
 	.state('sprints', {
 	  url: '/sprints/:id',
 	  templateUrl: 'javascripts/sprints/views/sprints.client.view.html',
@@ -70,6 +84,18 @@ function($stateProvider, $urlRouterProvider) {
 			sprints.setIdBl($stateParams.id);
 			sprints.getAllUS($stateParams.id);
 		  return sprints.getAll($stateParams.id);
+		}]
+
+	  }
+	})
+	.state('users', {
+	  url: '/users/:id',
+	  templateUrl: 'javascripts/users/views/users.client.view.html',
+	  controller: 'UserCtrl',
+	  resolve: {
+		usersPromise: ['$stateParams', 'users', function($stateParams, users) {
+			users.setIdBl($stateParams.id);
+		  return users.getAll($stateParams.id);
 		}]
 
 	  }

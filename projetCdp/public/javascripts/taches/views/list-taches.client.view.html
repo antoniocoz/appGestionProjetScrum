@@ -47,9 +47,8 @@
               <!-- /.panel-body -->
           </div>
           <a href="#/taches/create/{{usId}}/{{backlogId}}">
-       <button class="btn btn-primary btn-add">Nouveau</button>
-      </a>
-          <!--<button class="btn btn-primary btn-test" ng-click="nouveau()">Nouveau</button></br> -->
+          <button id="btn-addUS" class="btn btn-primary" ng-click="nouveau()">Nouveau</button></br>
+          </a>
     </div>    
 
     <div class="panel panel-default" ng-show="editer">
@@ -102,7 +101,7 @@
             <div>
                <button class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
                <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}"> 
-                         <button class="btn btn-info" ng-click="annuler()">Annuler</button>
+                <button id="btn-cancelled" class="btn btn-warning" ng-click="annuler()">Annuler</button>
                </a> 
             </div>
             <!-- El elemento mensaje de error -->

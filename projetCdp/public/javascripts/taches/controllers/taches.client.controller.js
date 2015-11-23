@@ -24,9 +24,9 @@ function($scope, $location, tacheService){
 			tacheId:[],
 			etat:0
 		  });
-		  $scope.numero = '';
-		  $scope.description = '';
-		  $scope.dure = '';
+		  //$scope.numero = '';
+		  //$scope.description = '';
+		  //$scope.dure = '';
 		  $location.path('taches/' + $scope.usId+'/'+$scope.backlogId);
 	};
 	

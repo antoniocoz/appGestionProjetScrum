@@ -43,7 +43,7 @@ router.get('/tache/:tacheId', function(req, res) {
 
 router.post('/taches', function(req, res, next) {
   var tache = new Tache(req.body);
-  console.log(tache);
+  //console.log(tache);
   tache.save(function(err, tache){
     if(err){ return next(err); }
     res.json(tache);

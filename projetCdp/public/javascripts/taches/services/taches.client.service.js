@@ -51,8 +51,8 @@ angular.module('taches').factory('tacheService', ['$http', function($http){
 
   o.getTachesBySprints = function(spId) {
     return $http.get('/tachesBySprints/' + spId).success(function(data){
-      console.log("spId:"+spId);
-      console.log("taches:"+data);
+      //console.log("spId:"+spId);
+      //console.log("taches:"+data);
       angular.copy(data, o.taches);
     });
   };

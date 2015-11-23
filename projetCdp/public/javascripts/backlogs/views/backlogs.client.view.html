@@ -22,8 +22,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="backlog in backlogs">
-                  <td>1</td>
+                <tr ng-repeat="backlog in backlogs" ng-init="numBacklog = $index+1">
+                  <td>{{numBacklog}}</td>
                   <td>{{backlog.title}}</td>
                   <td>{{backlog.description}}</td>
                   <td>{{backlog.gitlink}}</td>

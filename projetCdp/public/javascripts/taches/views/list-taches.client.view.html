@@ -5,6 +5,7 @@
       <div class="container-fluid">
       <div>
         <ul class="nav navbar-nav">
+        <li><a id="aHome" href="#/home">Home</a></li>
         <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
         </ul>
       </div>
@@ -35,8 +36,8 @@
                                   <td>{{tache.description}}</td>
                                   <td>{{tache.dure}}</td>
                                   <td>
-                                     <button class="btn btn-warning" data-ng-click="edit(tache);">Modifier</button>
-                                     <button class="btn btn-danger" data-ng-click="delete(tache);">Supprimer</button> 
+                                     <button class="btn btn-warning btn-edit" data-ng-click="edit(tache);">Modifier</button>
+                                     <button class="btn btn-danger btn-delete" data-ng-click="delete(tache);">Supprimer</button> 
                                   </td>
                               </tr>
                           </tbody>
@@ -47,7 +48,7 @@
               <!-- /.panel-body -->
           </div>
           <a href="#/taches/create/{{usId}}/{{backlogId}}">
-          <button id="btn-addUS" class="btn btn-primary" ng-click="nouveau()">Nouveau</button></br>
+          <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Nouveau</button></br>
           </a>
     </div>    
 
@@ -99,9 +100,9 @@
             </div>
             </br>
             <div>
-               <button class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
+               <button id="btn-update" class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
                <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}"> 
-                <button id="btn-cancelled" class="btn btn-warning" ng-click="annuler()">Annuler</button>
+                <button id="btn-cancelledEdit" class="btn btn-warning" ng-click="annuler()">Annuler</button>
                </a> 
             </div>
             <!-- El elemento mensaje de error -->

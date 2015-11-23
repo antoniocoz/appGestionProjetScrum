@@ -13,7 +13,6 @@ function($scope, sprints, userStories){
 
 	$scope.$watch('selected', function(nowSelected){
 	  	$scope.uss = [];
-
 	  	if( ! nowSelected){return;}
 
 	  	angular.forEach(nowSelected, function(val){
@@ -101,9 +100,16 @@ function($scope, sprints, userStories){
 	$scope.newSprint = function(){
           $scope.edit = true;
 	};
+
 	$scope.cancel = function(){
           $scope.edit = false;
           $scope.updateUserStories = false;         
+	};
+
+	$scope.showPert = function(id){
+		$scope.edit = false;
+        $scope.updateUserStories = false;
+
 	};
 
 }]);

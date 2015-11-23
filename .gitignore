@@ -3,3 +3,5 @@ projetCdp/node_modules/*
 projetCdp/public/lib/*
 projetCdp/public/stylesheets/*
 projetCdp/tests/protractor.conf.js
+npm-debug.log
+projetCdp/tests/protractor.conf.js

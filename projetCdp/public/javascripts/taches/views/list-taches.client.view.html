@@ -60,6 +60,46 @@
             <div class="row">
                 <div class="col-lg-6">
                     <form role="form">
+<<<<<<< HEAD
+						<div>
+							<label for="Numero">Numero:</label>
+							<div>
+								<input class="form-control" type="text" data-ng-model="tache.numero" id="numero" placeholder="Numero" required>
+							</div>
+						</div>
+						<div>
+							<label for="description">Description:</label>
+							<div>
+								<textarea class="form-control" data-ng-model="tache.description" id="description" cols="80" rows="10" 
+									placeholder="Description">
+								</textarea>
+							</div>
+						</div>
+						<div>
+							<label for="dure">Duree:</label>
+							<div>
+								<input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Duree" required>
+							</div>
+
+              <div >
+                <label for="sel1">Taches (maintenir Ctrl pour selectionner plusieurs items) :</label>
+                  <select multiple ng-model="tache.tacheId" class="form-control" ng-options="tache as 'N° : ' + tache.numero + ' description : ' + tache.description  for tache in taches">
+                  </select>
+                  <br>
+                  
+              </div>
+						</div></br>
+						<div>
+							 <button class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
+							 <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}"> 
+			                   <button class="btn btn-info" ng-click="annuler()">Annuler</button>
+			                 </a> 
+						</div>
+						<!-- El elemento mensaje de error -->
+						<div data-ng-show="error">
+							<strong data-ng-bind="error"></strong>
+						</div>
+=======
             <div>
               <label for="Numero">Numero:</label>
               <div>
@@ -101,6 +141,7 @@
             <div data-ng-show="error">
               <strong data-ng-bind="error"></strong>
             </div>
+>>>>>>> 7b526904d849f893d42aa2135ea83b04334006de
                     </form>
                 </div>
                 <!-- /.col-lg-6 (nested) -->

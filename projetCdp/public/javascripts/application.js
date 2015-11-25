@@ -113,7 +113,8 @@ function($stateProvider, $urlRouterProvider) {
 	  controller: 'CommitCtrl',
 	  resolve: {
 		sprintsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
-			return commits.setIdBl($stateParams.id);
+			commits.setIdBl($stateParams.id);
+			return commits.get($stateParams.id);
 		}]
 
 	  }

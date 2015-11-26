@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'mean';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints', 'users']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'commits', 'sprints', 'users']);
 
 //Setup a state called home
 mainApplicationModule.config([
@@ -112,7 +112,7 @@ function($stateProvider, $urlRouterProvider) {
 	  templateUrl: 'javascripts/commits/views/commits.client.view.html',
 	  controller: 'CommitCtrl',
 	  resolve: {
-		sprintsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
+		commitsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
 			commits.setIdBl($stateParams.id);
 			return commits.get($stateParams.id);
 		}]

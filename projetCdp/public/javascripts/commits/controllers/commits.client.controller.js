@@ -1,4 +1,4 @@
-angular.module('commits', [ 'octonode' ]).controller('CommitCtrl', [
+angular.module('commits').controller('CommitCtrl', [
     '$scope',
     'commits',
     function($scope, commits) {

@@ -102,7 +102,7 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="sel1">Taches (maintenir Ctrl pour selectionner plusieurs items) :</label>
+                                <label for="sel1">Dépendances (maintenir Ctrl pour selectionner plusieurs tâches) :</label>
                                 <select id="tacheId" multiple ng-model="tache.tacheId" class="form-control">
                                     <option ng-repeat="t in taches" value="{{t.numero}}" ng-if="(tache._id!=t._id)">{{t.description}}</option>
                                 </select>

@@ -4,7 +4,11 @@ angular.module('gantts').factory('gantts', ['$http', function($http) {
         users: []
     };
     var idBl;
-    var idSp
+    var idSp;
+
+    o.getTasks = function(){
+        return o.tasks;
+    }
 
     o.setIdBl = function(id) {
         idBl = id;
@@ -23,7 +27,7 @@ angular.module('gantts').factory('gantts', ['$http', function($http) {
     };
 
     o.getAllTasks = function(idSp) {
-        return $http.get('/tasks/' + idSp).success(function(data) {
+        return $http.get('/tasksBySprints/' + idSp).success(function(data) {
             angular.copy(data, o.tasks);
         });
     };
@@ -31,6 +35,13 @@ angular.module('gantts').factory('gantts', ['$http', function($http) {
     o.getAllUsers = function(idBL) {
         return $http.get('/users/' + idBL).success(function(data) {
             angular.copy(data, o.users);
+        });
+    };
+
+    o.updateTask = function(idSp, idTask, owner) {
+        console.log(idTask);
+        return $http.put('/task/' + idTask, owner).success(function(response) {
+            o.getAllTasks(idSp);
         });
     };
 

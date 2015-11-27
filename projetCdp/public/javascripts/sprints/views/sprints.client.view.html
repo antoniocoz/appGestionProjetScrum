@@ -34,14 +34,14 @@
                                     <button class="btn btn-warning btn-editSprint" ng-click="editSprint(sp)">Modifier</button>
                                     <button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)">Ajouter US</button>
                                     <button class="btn btn-danger" ng-click="deleteSprint(sp._id)">Supprimer</button>
-                                    <a class="testDetail" href="#/taches/pert/{{sp._id}}/{{sp.backlog}}">
+                                    <a class="pert" href="#/taches/pert/{{sp._id}}/{{sp.backlog}}">
                                         <button class="btn btn-primary btn-showPert" ng-click="showPert(sp._id)">Pert</button>
                                     </a>
-                                    <a class="testDetail" href="#/taches/kanban/p/{{sp._id}}/{{sp.backlog}}">
-                                        <button class="btn btn-primary">Kanban</button>
+                                    <a class="kanban" href="#/taches/kanban/p/{{sp._id}}/{{sp.backlog}}">
+                                        <button class="btn btn-primary btn-kanban">Kanban</button>
                                     </a>
-                                    <a class="testDetail" href="#/gantts/{{sp._id}}/{{sp.backlog}}">
-                                        <button class="btn btn-primary">Gantt</button>
+                                    <a class="gantt" href="#/gantts/{{sp._id}}/{{sp.backlog}}">
+                                        <button class="btn btn-primary btn-gantt">Gantt</button>
                                     </a>
                                 </td>
                                 <td>

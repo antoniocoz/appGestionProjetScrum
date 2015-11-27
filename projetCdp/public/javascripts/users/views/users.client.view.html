@@ -4,7 +4,7 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li><a id="aHome" href="#/home">Home</a></li>
-                    <li><a id="aSprint" href="#/userStories/{{backlogId}}">UserStories</a></li>
+                    <li><a id="aUS" href="#/userStories/{{backlogId}}">UserStories</a></li>
                     <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
             <!-- /.panel-body -->
         </div>
 
-        <button class="btn btn-primary btn-test" ng-click="new()">Nouveau</button>
+        <button id="btn-add" class="btn btn-primary" ng-click="new()">Nouveau</button>
         </br>
     </div>
 
@@ -61,11 +61,11 @@
                     <form role="form">
                         <div class="form-group">
                             <label for="sel1">Prénom:</label>
-                            <input type="text" class="form-control" placeholder="Forename" ng-model="forename">
+                            <input type="text" class="form-control" placeholder="Prénom" ng-model="forename">
                             </input>
                             <br>
                             <label for="sel1">Nom:</label>
-                            <input type="text" class="form-control" placeholder="Surname" ng-model="surname">
+                            <input type="text" class="form-control" placeholder="Nom" ng-model="surname">
                             </input>
                             <br>
                             <label for="sel1">Contact Email:</label>
@@ -77,8 +77,8 @@
                                 </input>
                             </div>
                         </div>
-                        <button id="BtnAddUserstory" class="btn btn-primary" ng-click="addUser()">Ajouter</button>
-                        <button id="BtnEditUserstory" class="btn btn-info" ng-click="updateUser(user._id)">Editer</button>
+                        <button id="BtnAddUser" class="btn btn-primary" ng-click="addUser()">Ajouter</button>
+                        <button id="BtnEditUser" class="btn btn-info" ng-click="updateUser(user._id)">Editer</button>
                         <a class="testDetail" href="#/users/{{backlogId}}">
                             <button class="btn btn-warning" ng-click="cancel()">Annuler</button>
                         </a>

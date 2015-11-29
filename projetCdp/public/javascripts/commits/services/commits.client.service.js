@@ -24,9 +24,11 @@ angular.module('commits').factory('commits', ['$http', function($http) {
             });
             return;
         });*/
-         return $http.get('/commits/' + id).then(function(res) {
-            return res.data;
+         return $http.get('/commits/' + id).then(function(response) {
+            return response;
         });
     };
+
+    return o;
     
 }]);

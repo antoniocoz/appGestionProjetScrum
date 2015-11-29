@@ -14,24 +14,89 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
             var nodeDataArray = [];
             var linkDataArray = [];
 
+            var node0 = {
+                key: 0,
+                text: 0,
+                earlyStart: 0,
+                lateFinish: 0
+            };
+            var nodeFinal = {
+                key: $scope.taches.length + 1,
+                text: 'final',
+                earlyStart: 0,
+                lateFinish: 0
+            };
+            nodeDataArray.push(node0);
+
+            maxDuree = 0;
+
+            /** creation noeuds **/
             for (var i = 0; i < $scope.taches.length; i++) {
                 var node = {
-                    key: $scope.taches[i].numero,
-                    text: $scope.taches[i].description,
+                    key: $scope.taches[i]._id,
+                    text: $scope.taches[i].numero,
                     earlyStart: $scope.taches[i].delaiplustot,
                     lateFinish: $scope.taches[i].delaiplustard
                 };
                 nodeDataArray.push(node);
 
-                for (var j = 0; j < $scope.taches[i].tacheId.length; j++) {
+                /** Boucle link node0 --> tache avec delaiplustot=0 **/
+                if ($scope.taches[i].delaiplustot == 0) {
                     var link = {
-                        from: $scope.taches[i].tacheId[j],
-                        to: $scope.taches[i].numero
+                        from: nodeDataArray[0].key,
+                        to: $scope.taches[i]._id
                     };
+
                     linkDataArray.push(link);
                 };
 
+                /** Liaisons des taches avec leur dépendances **/
+                for (var j = 0; j < $scope.taches[i].tacheId.length; j++) {
+                    var link = {
+                        from: $scope.taches[i].tacheId[j],
+                        to: $scope.taches[i]._id
+                    };
+
+                    linkDataArray.push(link);
+                };
+
+                /** Liaison taches non dépendantes -> noeud final **/
+                var dependence = false;
+                for (var l = 0; l < $scope.taches.length; l++) {
+
+                    if ($scope.taches[i]._id != $scope.taches[l]._id) {
+                        for (var k = 0; k < $scope.taches[l].tacheId.length; k++) {
+
+                            if (!dependence && $scope.taches[i]._id == $scope.taches[l].tacheId[k]) {
+                                dependence = true;
+                                break;
+                            };
+
+                        };
+                    };
+                };
+
+                if (!dependence) {
+                    var link = {
+                        from: $scope.taches[i]._id,
+                        to: nodeFinal.key
+                    };
+                    linkDataArray.push(link);
+                }
+
+                /** determiner la duree max pour le delaiplustard du noeud final **/
+                if ($scope.taches[i].delaiplustard > maxDuree) {
+                    maxDuree = $scope.taches[i].delaiplustard;
+                };
+
+
+
             };
+
+            nodeFinal.lateFinish = maxDuree;
+            nodeFinal.text = $scope.taches.length + 1;
+            nodeDataArray.push(nodeFinal);
+
 
             diagramPert(nodeDataArray, linkDataArray);
 

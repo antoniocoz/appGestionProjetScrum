@@ -29,6 +29,7 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
             nodeDataArray.push(node0);
 
             maxDuree = 0;
+            minDuree = 0;
 
             /** creation noeuds **/
             for (var i = 0; i < $scope.taches.length; i++) {
@@ -82,6 +83,9 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
                         to: nodeFinal.key
                     };
                     linkDataArray.push(link);
+                    if ($scope.taches[i].delaiplustot > minDuree) {
+                        minDuree = $scope.taches[i].delaiplustot;
+                    };
                 }
 
                 /** determiner la duree max pour le delaiplustard du noeud final **/
@@ -95,6 +99,7 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
 
             nodeFinal.lateFinish = maxDuree;
             nodeFinal.text = $scope.taches.length + 1;
+            nodeFinal.earlyStart = minDuree;
             nodeDataArray.push(nodeFinal);
 
 

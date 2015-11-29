@@ -28,5 +28,5 @@ angular.module('commits').factory('commits', ['$http', function($http) {
             return res.data;
         });
     };
-
+    
 }]);

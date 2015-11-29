@@ -136,13 +136,13 @@ function($stateProvider, $urlRouterProvider) {
 	  }
 	})
 	.state('commits', {
-	  url: '/commits/:id',
+	  url: '/commits/:backlog',
 	  templateUrl: 'javascripts/commits/views/commits.client.view.html',
 	  controller: 'CommitCtrl',
 	  resolve: {
 		commitsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
-			commits.setIdBl($stateParams.id);
-			return commits.get($stateParams.id);
+			commits.setIdBl($stateParams.backlog);
+			return commits.get($stateParams.backlog);
 		}]
 
 	  }

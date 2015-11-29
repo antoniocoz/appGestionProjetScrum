@@ -18,7 +18,34 @@
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Gitlink</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="commit in commits">
+                            <td></td>
+                            <td>{{commits.title}}</td>
+                            <td>{{backlog.description}}</td>
+                            <td>{{backlog.gitlink}}</td>
+                            <td>
+                                <a class="testDetail" href="#/userStories/{{backlog._id}}">
+                                    <button class="btn btn-primary btn-detail">Details</button>
+                                </a>
+                                <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>
+                                <button class="btn btn-warning btn-edit" ng-click="editBacklog(backlog)">Modifier</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
         <!-- /.panel-body -->
         </div>

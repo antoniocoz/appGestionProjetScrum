@@ -11,23 +11,17 @@ function($scope, gantts, users, tasks){
 
 	$scope.addUserStory = false;
 
+	$scope.filled = false;
+	$scope.empty = true;
+
 	var chart1 = {};
-
-	chart1.options = {
-	        "title": "Diagramme de Gantt",
-	        "hAxis": {
-	            "title": "Durée"
-	        }
-	    };
-
-    chart1.formatters = {};
 
 	var limit;
 
 	function initChart(){
 		limit = [];
 		chart1.type = "Timeline";
-	    chart1.cssStyle = "height: 30%; width:60%;";
+	    chart1.cssStyle = "height: 45%; width:60%;";
 	    chart1.data = {"cols": [
 	        {id: "dev", label: "Dev", type: "string"},
 	        {id: "task", label: "Task", type: "string"},
@@ -36,15 +30,28 @@ function($scope, gantts, users, tasks){
 	        {role: "tooltip", type: "string"}
 	    ], "rows": [
 	    ]};
+
+	    chart1.options = {
+	        "title": "Diagramme de Gantt",
+	        "hAxis": {
+	            "title": "Durée"
+	        },
+	        "tooltip": {
+	        	trigger: "none"
+	        }
+	    };
+
+    	chart1.formatters = {};
+
 	};
 
 	function addRow(rows, user, task, limit){
     	var t = {c: []};
     	t.c.push({v: user.forename});
-    	t.c.push({v: task.description});
+    	t.c.push({v: task.numero});
     	t.c.push({v: limit});
     	t.c.push({v: limit+task.dure});
-    	t.c.push({v: task.description});
+    	t.c.push({v: task.numero});
 		rows.push(t);
 	};
 
@@ -52,17 +59,24 @@ function($scope, gantts, users, tasks){
 		var indexUser;
 		var indexTask;
 		var indexLimit = 0;
-		for(indexUser = 0; indexUser < users.length; indexUser++){
-			limit.push(0);
-			for(indexTask = 0; indexTask < tasks.length; indexTask++){
-				if(tasks[indexTask].userId == users[indexUser]._id){
-					addRow(rows, users[indexUser], tasks[indexTask], limit[indexLimit]);
-					limit[indexLimit] += tasks[indexTask].dure;
+		var TasksSorted = tasks.sort($scope.compareTask);
+			for(indexUser = 0; indexUser < users.length; indexUser++){
+				limit.push(0);
+				for(indexTask = 0; indexTask < tasks.length; indexTask++){
+					if(TasksSorted[indexTask].userId == users[indexUser]._id){
+						addRow(rows, users[indexUser], TasksSorted[indexTask], limit[indexLimit]);
+						limit[indexLimit] += TasksSorted[indexTask].dure;
+						$scope.filled = true;
+						$scope.empty = false;
+					}
 				}
+				indexLimit++;
 			}
-			indexLimit++;
-		}
 	};
+
+	$scope.compareTask = function(a, b){
+		return (b.priority - a.priority);
+	}
 
 	$scope.showFormUs = function(user) {
 			$scope.addUserStory = true;
@@ -76,6 +90,59 @@ function($scope, gantts, users, tasks){
         fillChart(chart1.data.rows, $scope.users, $scope.tasks);
         $scope.chart = chart1;
     };
+
+    $scope.maxPriority = function(tasks){
+    	$scope.max = 0;
+    	for(var i=0; i<tasks.length; i++){
+    		if($scope.tasks[i].priority > $scope.max){
+    			$scope.max = $scope.tasks[i].priority;
+    		}
+    	}
+    }
+
+    $scope.minPriority = function(tasks){
+    	$scope.min = $scope.maxPriority ;
+    	for(var i=0; i<tasks.length; i++){
+    		if($scope.tasks[i].priority > $scope.max){
+    			$scope.max = $scope.tasks[i].priority;
+    		}
+    	}
+    }
+
+    $scope.tasksByUser = function(ownerId){
+    	var nbTasks = 0;
+    	for(var i=0; i<$scope.tasks.length; i++){
+    		if($scope.tasks[i].userId == ownerId){
+    			nbTasks++;
+    		}
+    	}
+    	console.log("nbTask : " + nbTasks);
+    	return nbTasks;
+    }
+
+    $scope.upPriority = function(task, ownerId){
+    	var priority;
+    	console.log("taskPriority : " + task.priority);
+    	console.log("ownerId : " + ownerId);
+    	if(task.priority < $scope.tasksByUser(ownerId)){
+    		priority = task.priority + 1;
+    	}
+    	else{
+    		priority = task.priority;
+    	}
+    	gantts.updatePriorityTask($scope.sprintId, task._id, {priority: priority});
+    }
+
+    $scope.downPriority = function(task){
+    	var priority;
+    	if(task.priority-1 > 0){
+    		priority = task.priority - 1;
+    	}
+    	else{
+    		priority = 0;
+    	}
+    	gantts.updatePriorityTask($scope.sprintId, task._id, {priority: priority});
+    }
 
     initChart();
     fillChart(chart1.data.rows, $scope.users, $scope.tasks);

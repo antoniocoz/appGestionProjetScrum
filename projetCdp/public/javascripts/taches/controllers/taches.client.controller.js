@@ -120,7 +120,8 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
                 usId: $scope.usId,
                 tacheId: [],
                 etat: 0,
-                userId: ""
+                userId: "",
+                priority: 0
             });
 
             $location.path('taches/' + $scope.usId + '/' + $scope.backlogId);

@@ -39,8 +39,14 @@ angular.module('gantts').factory('gantts', ['$http', function($http) {
     };
 
     o.updateTask = function(idSp, idTask, owner) {
-        console.log(idTask);
         return $http.put('/task/' + idTask, owner).success(function(response) {
+            o.getAllTasks(idSp);
+        });
+    };
+
+    o.updatePriorityTask = function(idSp, idTask, priority) {
+        return $http.put('/taskPriority/' + idTask, priority).success(function(response) {
+            console.log(priority.priority);
             o.getAllTasks(idSp);
         });
     };

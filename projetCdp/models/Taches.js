@@ -9,7 +9,8 @@ var Tacheschema = new mongoose.Schema({
   usId: String,
   tacheId:[],
   etat:{type: Number, default: 0},
-  userId: String
+  userId: String,
+  priority:{type: Number, default: 0}
 });
 
 mongoose.model('Tache', Tacheschema);

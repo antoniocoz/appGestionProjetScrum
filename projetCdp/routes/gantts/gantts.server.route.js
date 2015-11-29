@@ -59,4 +59,20 @@ router.put('/task/:tacheId', function(req, res) {
         });
 });
 
+router.put('/taskPriority/:tacheId', function(req, res) {
+    var priority = req.body.priority;
+
+    var query = {
+        "_id": req.params.tacheId
+    };
+    Task.findOneAndUpdate(query, {
+            priority: priority
+        }, {
+            'new': true
+        },
+        function(doc) {
+            res.json(doc);
+        });
+});
+
 module.exports = router;

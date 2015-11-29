@@ -40,12 +40,19 @@
                       <tr>
                       <th>Description</th>
                       <th>Durée</th>
+                      <th>Options</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr  ng-repeat="t in tasks" ng-if='t.userId==user._id'>
+                      <tr  ng-repeat="t in tasks | orderBy:'-priority'" ng-if='t.userId==user._id'>
                         <td>{{t.description}}</td>
                         <td>{{t.dure}}</td>
+                        <td>
+                          <div class="btn-group">
+                          <label class="btn btn-success" ng-click="upPriority(t, user._id)" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>Up</label>
+                          <label class="btn btn-danger" ng-click="downPriority(t)" ng-model="radioModel" uib-btn-radio="'Right'" uncheckable>Down</label>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                       </table>
@@ -54,10 +61,13 @@
                           </tbody>
                       </table>
                   </div>
+                  </br>
                   <!-- /.table-responsive -->
+                  <div>
                   <a href="#/gantts/{{sprintId}}/{{backlogId}}">
                     <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Diagramme</button>
                   </a>
+                  </div>
               </div>
               <!-- /.panel-body -->
           </div>

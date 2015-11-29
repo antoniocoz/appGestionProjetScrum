@@ -19,13 +19,37 @@
 
 
               		<div>
-              			<div google-chart chart="chart" style="{{chart.cssStyle}}"/>
+              			<div ng-show="filled" google-chart chart="chart" style="{{chart.cssStyle}}"/>
               		</div>
+                  <div ng-show="empty"> <p>Le diagramme de Gantt n'a pas été encore configuré</p></div>
                   <!-- /.table-responsive -->
+
+                  <div>
+                  <a href="#/gantts/edit/{{sprintId}}/{{backlogId}}">
+                    <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Créer/Modifier le Gantt</button>
+                 </a>
+                 </div>
+               </br>
+                  <div class="table-responsive table-bordered">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Numéro</th>
+                                  <th>Description</th>
+                                  <th>Durée</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                  <tr ng-repeat="t in tasks">
+                                  <td>{{t.numero}}</td>
+                                  <td>{{t.description}}</td>
+                                  <td>{{t.dure}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+
               </div>
-              <a href="#/gantts/edit/{{sprintId}}/{{backlogId}}">
-                <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Créer/Modifier le Gantt</button>
-              </a>
               <!-- /.panel-body -->
           </div>
 

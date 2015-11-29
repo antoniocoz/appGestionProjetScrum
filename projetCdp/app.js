@@ -23,6 +23,7 @@ var taches = require('./routes/taches/taches.server.route');
 var sprints = require('./routes/sprints/sprints.server.route');
 var commits = require('./routes/commits/commits.server.route');
 var users = require('./routes/users/users.server.route');
+var gantts = require('./routes/gantts/gantts.server.route');
 
 var app = express();
 
@@ -46,6 +47,7 @@ app.use('/', taches);
 app.use('/', sprints);
 app.use('/', commits);
 app.use('/', users);
+app.use('/', gantts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

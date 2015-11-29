@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'mean';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'sprints', 'users']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','backlogs','userstories','taches', 'commits', 'sprints', 'users', 'gantts']);
 
 //Setup a state called home
 mainApplicationModule.config([
@@ -107,13 +107,42 @@ function($stateProvider, $urlRouterProvider) {
 
 	  }
 	})
+	.state('gantts', {
+	  url: '/gantts/:idSP/:idBL',
+	  templateUrl: 'javascripts/gantts/views/gantts.client.view.html',
+	  controller: 'GanttCtrl',
+	  resolve: {
+		ganttsPromise: ['$stateParams', 'gantts', function($stateParams, gantts) {
+		  gantts.setIdBl($stateParams.idBL);
+		  gantts.setIdSp($stateParams.idSP);
+		  gantts.getAllUsers($stateParams.idBL);
+		  return gantts.getAllTasks($stateParams.idSP);
+		}]
+
+	  }
+	})
+	.state('gantts/edit', {
+	  url: '/gantts/edit/:idSP/:idBL',
+	  templateUrl: 'javascripts/gantts/views/tasks-gantt.client.view.html',
+	  controller: 'GanttCtrl',
+	  resolve: {
+		ganttsPromise: ['$stateParams', 'gantts', function($stateParams, gantts) {
+		  gantts.setIdBl($stateParams.idBL);
+		  gantts.setIdSp($stateParams.idSP);
+		  gantts.getAllUsers($stateParams.idBL);
+		  return gantts.getAllTasks($stateParams.idSP);
+		}]
+		
+	  }
+	})
 	.state('commits', {
 	  url: '/commits/:id',
 	  templateUrl: 'javascripts/commits/views/commits.client.view.html',
 	  controller: 'CommitCtrl',
 	  resolve: {
-		sprintsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
-			return commits.setIdBl($stateParams.id);
+		commitsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
+			commits.setIdBl($stateParams.id);
+			return commits.get($stateParams.id);
 		}]
 
 	  }

@@ -1,8 +1,8 @@
 angular.module('commits').controller('CommitCtrl', [
     '$scope',
-    'backlogs',
-    function($scope, backlogs) {
-        $scope.backlogs = backlogs.backlogs;
-
+    'commits',
+    function($scope, commits) {
+        $scope.commits = commits.commits;
+        $scope.backlogId = commits.getIdBl();
     }
 ]);

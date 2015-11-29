@@ -8,7 +8,8 @@ var Tacheschema = new mongoose.Schema({
   delaiplustard: {type: Number, default: 0},
   usId: String,
   tacheId:[],
-  etat:{type: Number, default: 0}
+  etat:{type: Number, default: 0},
+  userId: String
 });
 
 mongoose.model('Tache', Tacheschema);

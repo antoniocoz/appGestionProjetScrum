@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var US = mongoose.model('US');
-var Tache = mongoose.model('Tache');
+var Task = mongoose.model('Tache');
 
 router.get('/users/:backlog', function(req, res) {
     var query = {
@@ -17,7 +17,7 @@ router.get('/users/:backlog', function(req, res) {
     });
 });
 
-router.get('/tachesBySprints/:spId', function(req, res) {
+router.get('/tasksBySprints/:spId', function(req, res) {
     var query = {
         "sprint": req.params.spId
     };
@@ -34,13 +34,29 @@ router.get('/tachesBySprints/:spId', function(req, res) {
                 $in: spIds
             }
         };
-        Tache.find(query, function(err, taches) {
+        Task.find(query, function(err, taches) {
             if (err) {
                 return next(err);
             }
             res.json(taches);
         });
     });
+});
+
+router.put('/task/:tacheId', function(req, res) {
+    var owner = req.body.owner;
+
+    var query = {
+        "_id": req.params.tacheId
+    };
+    Task.findOneAndUpdate(query, {
+            userId: owner
+        }, {
+            'new': true
+        },
+        function(doc) {
+            res.json(doc);
+        });
 });
 
 module.exports = router;

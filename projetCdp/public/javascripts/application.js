@@ -95,6 +95,19 @@ function($stateProvider, $urlRouterProvider) {
 
 	  }
 	})
+	.state('sprints/bc', {
+	  url: '/sprints/bc/:id',
+	  templateUrl: 'javascripts/sprints/views/bc.client.view.html',
+	  controller: 'SprintCtrl',
+	  resolve: {
+		sprintsPromise: ['$stateParams', 'sprints', function($stateParams, sprints) {
+			sprints.setIdBl($stateParams.id);
+			sprints.getAllUS($stateParams.id);
+		  return sprints.getAll($stateParams.id);
+		}]
+
+	  }
+	})
 	.state('users', {
 	  url: '/users/:id',
 	  templateUrl: 'javascripts/users/views/users.client.view.html',

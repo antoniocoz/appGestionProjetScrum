@@ -45,7 +45,7 @@ function($scope, gantts, users, tasks){
 	function addRow(rows, user, task, limit){
     	var t = {c: []};
     	t.c.push({v: user.forename});
-    	t.c.push({v: task.numero});
+    	t.c.push({v: "n°"+task.numero});
     	t.c.push({v: limit*1000});
     	t.c.push({v: (limit+task.dure)*1000});
     	t.c.push({v: task.numero});
@@ -125,7 +125,7 @@ function($scope, gantts, users, tasks){
 
     $scope.upPriority = function(task, ownerId){
     	var priority;
-    	if(task.priority < $scope.tasksByUser(ownerId)){
+    	if(task.priority < $scope.tasksByUser(ownerId)-1){
     		priority = task.priority + 1;
     	}
     	else{

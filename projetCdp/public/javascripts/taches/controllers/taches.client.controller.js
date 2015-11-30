@@ -146,5 +146,11 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
         $scope.annuler = function() {
             $scope.editer = false;
         };
+        
+        $scope.changeEtat = function(tache,etat) {
+            tache.etat=etat;
+            tacheService.updateEtat(tache._id, tache);
+        };
+
     }
 ]);

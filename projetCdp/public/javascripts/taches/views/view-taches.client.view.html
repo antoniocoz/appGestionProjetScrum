@@ -24,8 +24,9 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="alert alert-warning" ng-repeat="tache in taches" ng-if="(tache.etat==0)">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 {{tache.description}}.
+                                <button type="button" class="btn btn-outline btn-info" ng-click="changeEtat(tache,1)">Doing
+                                </button>
                             </div>
 
                         </div>
@@ -43,8 +44,9 @@
                         <div class="panel-body">
                       
                             <div class="alert alert-info alert-dismissable" ng-repeat="tache in taches" ng-if="(tache.etat==1)">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 {{tache.description}}.
+                                <button type="button" class="btn btn-outline btn-success" ng-click="changeEtat(tache,2)">Done
+                                </button>
                             </div>
 
                         </div>
@@ -60,9 +62,11 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="alert alert-success alert-dismissable" ng-repeat="tache in taches" ng-if="(tache.etat==2)">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <div class="alert alert-success alert-dismissable" ng-repeat="tache in taches" 
+                            ng-if="(tache.etat==2)">
                                 {{tache.description}}.
+                                <button type="button" class="btn btn-outline btn-info" ng-click="changeEtat(tache,1)">Doing
+                                </button>
                             </div>
                         </div>
                         <!-- .panel-body -->

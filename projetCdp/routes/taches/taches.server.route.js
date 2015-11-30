@@ -102,4 +102,19 @@ router.put('/taches/:tacheId', function(req, res) {
             res.json(doc);
         });
 });
+
+
+router.put('/tachesUpdate/:tacheId', function(req, res) {
+    var tache=req.body;
+    var query = {
+        "_id": tache._id
+    };
+    Tache.findOneAndUpdate(query, tache, {
+        'new': true
+    },
+    function(doc) {
+        res.json(doc);
+    });
+});
+
 module.exports = router;

@@ -45,6 +45,12 @@ angular.module('taches').factory('tacheService', ['$http', function($http) {
         });
     };
 
+    o.updateEtat = function(tacheId, tache) {
+        return $http.put('/tachesUpdate/' + tacheId, tache).success(function(response) {
+            o.getAll(tache.usId);
+        });
+    };
+
     o.create = function(tache) {
         return $http.post('/taches', tache).success(function(data) {
             o.taches.push(data);

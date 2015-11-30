@@ -1,5 +1,3 @@
-//var github = require('octonode');
-//var client = github.client();
 angular.module('commits').factory('commits', ['$http', function($http) {
     var o = {
         commits: []
@@ -16,16 +14,9 @@ angular.module('commits').factory('commits', ['$http', function($http) {
     };
 
     //get one backlog in using an id
-    o.get = function(id) {
-        /*return $http.get('/commits/' + id).then(function(res) {
-            var ghrepo = client.repo(res.data.gitlink);
-            ghrepo.commits(function() {
-
-            });
-            return;
-        });*/
-         return $http.get('/commits/' + id).then(function(response) {
-            return response;
+    o.get = function(id,i) {
+        return $http.get('/commits/' + id+'/'+i).success(function(data) { 
+            angular.copy(data, o.commits);
         });
     };
 

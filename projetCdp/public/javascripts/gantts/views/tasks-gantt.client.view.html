@@ -2,11 +2,15 @@
 	  
 	  <nav class="navbar navbar-default">
 		  <div class="container-fluid">
-			<div>
-			  <ul class="nav navbar-nav">
-				<li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
-			  </ul>
-			</div>
+  			<div>
+            <ul class="nav navbar-nav">
+              <li><a id="aHome" href="#/home">Home</a></li>
+              <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+              <li><a id="aCommit" href="#/commits/{{backlogId}}">Commits</a></li>
+              <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+              <li><a id="aUser" href="#/users/{{backlogId}}">Développeurs</a></li>
+            </ul>
+  			</div>
 		  </div>
 		</nav>
           <div class="panel panel-default">
@@ -40,12 +44,26 @@
                       <tr>
                       <th>Description</th>
                       <th>Durée</th>
+                      <th>Options</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr  ng-repeat="t in tasks" ng-if='t.userId==user._id'>
+                      <tr  ng-repeat="t in tasks | orderBy:'-priority'" ng-if='t.userId==user._id'>
                         <td>{{t.description}}</td>
                         <td>{{t.dure}}</td>
+                        <td>
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-success" ng-click="upPriority(t, user._id)">
+                              <span class="glyphicon glyphicon-chevron-up"></span>
+                           </button>
+                           <button type="button" class="btn btn-danger" ng-click="downPriority(t)">
+                              <span class="glyphicon glyphicon-chevron-down"></span>
+                           </button>
+                           <button type="button" class="btn btn-danger" ng-click="deleteTask(t._id)">
+                              <span class="glyphicon glyphicon-remove"></span>
+                           </button>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                       </table>
@@ -54,10 +72,13 @@
                           </tbody>
                       </table>
                   </div>
+                  </br>
                   <!-- /.table-responsive -->
+                  <div>
                   <a href="#/gantts/{{sprintId}}/{{backlogId}}">
                     <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Diagramme</button>
                   </a>
+                  </div>
               </div>
               <!-- /.panel-body -->
           </div>

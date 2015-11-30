@@ -34,7 +34,9 @@ angular.module('sprints', ['googlechart']).controller('SprintCtrl', [
         $scope.allDifficulties = function() {
             var sum = 0;
             for (var i = 0; i < $scope.userStories.length; i++) {
-                sum += $scope.userStories[i].difficulty;
+                if($scope.userStories[i].sprint != ""){
+                    sum += $scope.userStories[i].difficulty;
+                }
             }
             return sum;
         }
@@ -51,7 +53,7 @@ angular.module('sprints', ['googlechart']).controller('SprintCtrl', [
 
         function initChart() {
             chart1.type = "LineChart";
-            chart1.cssStyle = "height: 50%; width:60%;";
+            chart1.cssStyle = "height: 60%; width:60%;";
             chart1.data = {
                 "cols": [{
                     id: "sprint",
@@ -85,7 +87,7 @@ angular.module('sprints', ['googlechart']).controller('SprintCtrl', [
                     }
                 },
                 vAxis: {
-                    title: 'Difficulties',
+                    title: 'Difficultés',
                     viewWindow: {
                         max: $scope.allDifficulties(),
                         min: 0
@@ -101,6 +103,7 @@ angular.module('sprints', ['googlechart']).controller('SprintCtrl', [
         };
 
         $scope.previousDifficulty = $scope.allDifficulties();
+        $scope.realDifficulty = $scope.allDifficulties();
 
         function addRowInit(rows, i, perfectValue, realValue, previousDifficulty) {
             var t = {
@@ -133,6 +136,7 @@ angular.module('sprints', ['googlechart']).controller('SprintCtrl', [
             });
             rows.push(t);
             $scope.previousDifficulty = perfectValue;
+            $scope.realDifficulty = realValue;
         };
 
         function fillChart(rows, sprints) {
@@ -142,7 +146,7 @@ angular.module('sprints', ['googlechart']).controller('SprintCtrl', [
             var totalSprints = $scope.allSprints();
             addRowInit(rows, 0, totalDifficulties, totalDifficulties);
             for (index = 0; index < sprints.length; index++) {
-                addRow(rows, indexSprint, $scope.previousDifficulty - (totalDifficulties / totalSprints), $scope.allDifficultiesBySprint(sprints[index]._id), $scope.previousDifficulty);
+                addRow(rows, indexSprint, $scope.previousDifficulty - (totalDifficulties / totalSprints), $scope.realDifficulty-$scope.allDifficultiesBySprint(sprints[index]._id), $scope.previousDifficulty);
                 indexSprint++;
             }
         };

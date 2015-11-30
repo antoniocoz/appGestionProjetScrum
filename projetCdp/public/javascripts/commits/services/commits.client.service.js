@@ -3,8 +3,6 @@ angular.module('commits').factory('commits', ['$http', function($http) {
         commits: []
     };
 
-    //var github = require('octonode');
-
     var idBl;
 
     o.setIdBl = function(id) {
@@ -17,8 +15,8 @@ angular.module('commits').factory('commits', ['$http', function($http) {
 
     //get one backlog in using an id
     o.get = function(id) {
-        return $http.get('/commits/' + id).then(function(response) {
-            return response;
+        return $http.get('/commits/' + id).success(function(data) {
+            angular.copy(data, o.commits);
         });
     };
 

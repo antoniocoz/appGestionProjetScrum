@@ -16,9 +16,9 @@ router.get('/commits/:backlog', function(req, res) {
         ghrepo.commits(function(err, data){
         	if (err) {return (err);}
 
-        	console.log(data);
+        	res.json(data);
         });
-        res.json(doc);
+        
     });
 });
 

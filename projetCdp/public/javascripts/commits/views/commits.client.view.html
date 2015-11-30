@@ -19,29 +19,22 @@
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="table-responsive table-bordered">
-                <table class="table">
+                <table class="table table-striped table-bordered table-hover" id="commitArray">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Title</th>
+                            <th>Auteur</th>
+                            <th>Date</th>
                             <th>Description</th>
-                            <th>Gitlink</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="commit in commits">
-                            <td></td>
-                            <td>{{commits.title}}</td>
-                            <td>{{backlog.description}}</td>
-                            <td>{{backlog.gitlink}}</td>
-                            <td>
-                                <a class="testDetail" href="#/userStories/{{backlog._id}}">
-                                    <button class="btn btn-primary btn-detail">Details</button>
-                                </a>
-                                <button class="btn btn-danger" ng-click="deleteBacklog(backlog._id)">Supprimer</button>
-                                <button class="btn btn-warning btn-edit" ng-click="editBacklog(backlog)">Modifier</button>
-                            </td>
+                            <td>{{commit.author.id}}</td>
+                            <td>{{commit.author.login}}</td>
+                            <td>{{commit.commit.author.date | date:'dd/MM/yyyy'}}</td>
+                            <td>{{commit.commit.message}}</td>
                         </tr>
                     </tbody>
                 </table>

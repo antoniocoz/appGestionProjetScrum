@@ -50,6 +50,15 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
 
                     linkDataArray.push(link);
                 };
+                /** Boucle link node0 --> tache sans dépendances **/
+                if ($scope.taches[i].tacheId.length == 0) {
+                    var link = {
+                        from: nodeDataArray[0].key,
+                        to: $scope.taches[i]._id
+                    };
+
+                    linkDataArray.push(link);
+                };
 
                 /** Liaisons des taches avec leur dépendances **/
                 for (var j = 0; j < $scope.taches[i].tacheId.length; j++) {

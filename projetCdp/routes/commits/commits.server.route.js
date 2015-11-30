@@ -13,7 +13,7 @@ router.get('/commits/:backlog', function(req, res) {
         if (err) {return (err);}
    
         var ghrepo = client.repo(doc.gitlink);
-        ghrepo.commits(function(err, data){
+        ghrepo.commits(0,20,function(err, data){
         	if (err) {return (err);}
 
         	res.json(data);

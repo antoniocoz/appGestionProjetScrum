@@ -41,15 +41,7 @@ angular.module('taches').controller('tacheController', ['$scope', '$location', '
                 };
                 nodeDataArray.push(node);
 
-                /** Boucle link node0 --> tache avec delaiplustot=0 **/
-                if ($scope.taches[i].delaiplustot == 0) {
-                    var link = {
-                        from: nodeDataArray[0].key,
-                        to: $scope.taches[i]._id
-                    };
 
-                    linkDataArray.push(link);
-                };
                 /** Boucle link node0 --> tache sans dépendances **/
                 if ($scope.taches[i].tacheId.length == 0) {
                     var link = {

@@ -27,15 +27,12 @@ function($scope, gantts, users, tasks){
 	        {id: "task", label: "Task", type: "string"},
 	        {id: "start", label: "Start", type: "number"},
 	        {id: "end", label: "End", type: "number"},
-	        {role: "tooltip", type: "string"}
+	        {role: "tooltip", type: "string", p: {html: true}}
 	    ], "rows": [
 	    ]};
 
 	    chart1.options = {
 	        "title": "Diagramme de Gantt",
-	        "hAxis": {
-	            "title": "Durée"
-	        },
 	        "tooltip": {
 	        	trigger: "none"
 	        }
@@ -49,8 +46,8 @@ function($scope, gantts, users, tasks){
     	var t = {c: []};
     	t.c.push({v: user.forename});
     	t.c.push({v: task.numero});
-    	t.c.push({v: limit});
-    	t.c.push({v: limit+task.dure});
+    	t.c.push({v: limit*1000});
+    	t.c.push({v: (limit+task.dure)*1000});
     	t.c.push({v: task.numero});
 		rows.push(t);
 	};
@@ -91,6 +88,13 @@ function($scope, gantts, users, tasks){
         $scope.chart = chart1;
     };
 
+    $scope.deleteTask = function(taskId) {
+        gantts.upOwnerAndPriorityTask($scope.sprintId, taskId);
+        initChart();
+        fillChart(chart1.data.rows, $scope.users, $scope.tasks);
+        $scope.chart = chart1;
+    };
+
     $scope.maxPriority = function(tasks){
     	$scope.max = 0;
     	for(var i=0; i<tasks.length; i++){
@@ -116,14 +120,11 @@ function($scope, gantts, users, tasks){
     			nbTasks++;
     		}
     	}
-    	console.log("nbTask : " + nbTasks);
     	return nbTasks;
     }
 
     $scope.upPriority = function(task, ownerId){
     	var priority;
-    	console.log("taskPriority : " + task.priority);
-    	console.log("ownerId : " + ownerId);
     	if(task.priority < $scope.tasksByUser(ownerId)){
     		priority = task.priority + 1;
     	}
@@ -145,6 +146,7 @@ function($scope, gantts, users, tasks){
     }
 
     initChart();
+
     fillChart(chart1.data.rows, $scope.users, $scope.tasks);
     $scope.chart = chart1;
 

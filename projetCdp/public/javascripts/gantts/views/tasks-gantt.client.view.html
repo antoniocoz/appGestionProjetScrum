@@ -49,8 +49,15 @@
                         <td>{{t.dure}}</td>
                         <td>
                           <div class="btn-group">
-                          <label class="btn btn-success" ng-click="upPriority(t, user._id)" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>Up</label>
-                          <label class="btn btn-danger" ng-click="downPriority(t)" ng-model="radioModel" uib-btn-radio="'Right'" uncheckable>Down</label>
+                            <button type="button" class="btn btn-success" ng-click="upPriority(t, user._id)">
+                              <span class="glyphicon glyphicon-chevron-up"></span>
+                           </button>
+                           <button type="button" class="btn btn-danger" ng-click="downPriority(t)">
+                              <span class="glyphicon glyphicon-chevron-down"></span>
+                           </button>
+                           <button type="button" class="btn btn-danger" ng-click="deleteTask(t._id)">
+                              <span class="glyphicon glyphicon-remove"></span>
+                           </button>
                           </div>
                         </td>
                       </tr>

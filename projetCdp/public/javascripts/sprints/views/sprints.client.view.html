@@ -21,12 +21,13 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div class="table-responsive table-bordered">
-                    <table class="table">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Sprint</th>
-                                <th>Option</th>
+                                <th>Options</th>
+                                <th>Diagrammes</th>
                                 <th>User Stories</th>
                             </tr>
                         </thead>
@@ -34,18 +35,22 @@
                             <tr ng-repeat="sp in sprints">
                                 <td>{{sp.title}}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-editSprint" ng-click="editSprint(sp)">Modifier</button>
-                                    <button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)">Ajouter US</button>
-                                    <button class="btn btn-danger" ng-click="deleteSprint(sp._id)">Supprimer</button>
-                                    <a class="pert" href="#/taches/pert/{{sp._id}}/{{sp.backlog}}">
-                                        <button class="btn btn-primary btn-showPert" ng-click="showPert(sp._id)">Pert</button>
-                                    </a>
-                                    <a class="kanban" href="#/taches/kanban/p/{{sp._id}}/{{sp.backlog}}">
-                                        <button class="btn btn-primary btn-kanban">Kanban</button>
-                                    </a>
-                                    <a class="gantt" href="#/gantts/{{sp._id}}/{{sp.backlog}}">
-                                        <button class="btn btn-primary btn-gantt">Gantt</button>
-                                    </a>
+                                        <button class="btn btn-primary btn-addUS" ng-click="showFormUs(sp)"><span class="glyphicon glyphicon-plus"></span></button>
+                                        <button class="btn btn-warning btn-editSprint" ng-click="editSprint(sp)"><span class="glyphicon glyphicon-pencil"></span></button>
+                                        <button class="btn btn-danger" ng-click="deleteSprint(sp._id)"><span class="glyphicon glyphicon-remove"></span></button>
+                                </td>
+                                <td>
+                                    <ul type= "none">
+                                    <li><a class="kanban" href="#/taches/kanban/p/{{sp._id}}/{{sp.backlog}}">
+                                            <button class="btn btn-primary btn-kanban">Kanban</button>
+                                        </a></li></br>
+                                    <li><a class="pert" href="#/taches/pert/{{sp._id}}/{{sp.backlog}}">
+                                            <button class="btn btn-primary btn-showPert" ng-click="showPert(sp._id)">Pert</button>
+                                        </a></li></br>
+                                        <li><a class="gantt" href="#/gantts/{{sp._id}}/{{sp.backlog}}">
+                                            <button class="btn btn-primary btn-gantt">Gantt</button>
+                                    </a></li>
+                                    </ul>
                                 </td>
                                 <td>
                                     <table class="table table-responsive table-bordered">
@@ -63,7 +68,7 @@
                                                 <td>{{us.priority}}</td>
                                                 <td>{{us.difficulty}}</td>
                                                 <td>
-                                                    <button class="btn btn-danger btn-deleteUS" ng-click="removeUserStory(us)">Supprimer</button>
+                                                    <button class="btn btn-danger btn-deleteUS" ng-click="removeUserStory(us)"><span class="glyphicon glyphicon-remove"></span></button>
                                                 </td>
                                             </tr>
                                         </tbody>

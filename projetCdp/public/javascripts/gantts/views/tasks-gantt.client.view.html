@@ -37,7 +37,7 @@
                                   <td>{{user.forename}}</td>
                                   <td>{{user.surname}}</td>
                                   <td>{{user.contact}}</td>
-                                  <td><button class="btn btn-primary btn-addUS" ng-click="showFormUs(user)">Ajouter Tâche</button></td>
+                                  <td><button class="btn btn-primary btn-addUS" ng-click="showFormUs(user)"><span class="glyphicon glyphicon-plus"></span></button></td>
                                   <td>
                                       <table   class="table table-responsive table-bordered">
                       <thead>
@@ -52,7 +52,7 @@
                         <td>{{t.description}}</td>
                         <td>{{t.dure}}</td>
                         <td>
-                          <div class="btn-group">
+                          <div class="btn-group" style="width: 120px">
                             <button type="button" class="btn btn-success" ng-click="upPriority(t, user._id)">
                               <span class="glyphicon glyphicon-chevron-up"></span>
                            </button>

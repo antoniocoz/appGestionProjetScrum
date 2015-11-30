@@ -21,7 +21,7 @@ function($scope, gantts, users, tasks){
 	function initChart(){
 		limit = [];
 		chart1.type = "Timeline";
-	    chart1.cssStyle = "height: 45%; width:60%;";
+	    chart1.cssStyle = "height: 30%; width:60%;";
 	    chart1.data = {"cols": [
 	        {id: "dev", label: "Dev", type: "string"},
 	        {id: "task", label: "Task", type: "string"},

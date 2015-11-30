@@ -15,21 +15,10 @@ router.get('/commits/:backlog/:i', function(req, res) {
    
         var ghrepo = client.repo(doc.gitlink);
 
-        //var count = 0;
-        //var tmp_data;
-       // for (var i = 0; i <= 6; i++) {
             ghrepo.commits(i,30,function(err, data){
+                if (err) {return (err);}
                 res.json(data);
-             //   tmp_data = data.length;
-            });   
-        //}
-       /*
-        console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+count);
-
-        ghrepo.commits(1,30,function(err, data){
-        	if (err) {return (err);}
-            res.json(data);
-        });*/  
+            });     
     });
 });
 

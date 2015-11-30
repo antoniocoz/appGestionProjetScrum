@@ -13,11 +13,11 @@ angular.module('commits').controller('CommitCtrl', ['$scope','commits',
        	 	if($scope.i >= 2){
        			$scope.previousbtn = true;
        		}
-       		/*if($scope.commits.length == 0){
+       		if($scope.commits.length == 0){
        			$scope.i--;
        			commits.get($scope.backlogId, $scope.i);
        			$scope.nextbtn = false;
-       		}*/
+       		}
        	}
 
        	$scope.previous = function(){

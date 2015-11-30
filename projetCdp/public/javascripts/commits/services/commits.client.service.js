@@ -14,9 +14,8 @@ angular.module('commits').factory('commits', ['$http', function($http) {
     };
 
     //get one backlog in using an id
-    o.get = function(id) {
-        return $http.get('/commits/' + id)
-        .success(function(data) { 
+    o.get = function(id,i) {
+        return $http.get('/commits/' + id+'/'+i).success(function(data) { 
             angular.copy(data, o.commits);
         });
     };

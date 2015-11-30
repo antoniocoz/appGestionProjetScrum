@@ -142,7 +142,7 @@ function($stateProvider, $urlRouterProvider) {
 	  resolve: {
 		commitsPromise: ['$stateParams', 'commits', function($stateParams, commits) {
 			commits.setIdBl($stateParams.backlog);
-			return commits.get($stateParams.backlog);
+			return commits.get($stateParams.backlog,1);
 		}]
 
 	  }

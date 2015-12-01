@@ -1,79 +1,106 @@
 <section>
-	  <div class="page-header">		
-		
-	  </div>
-	  
-	  <nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div>
-			  <ul class="nav navbar-nav">
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#">Sprints</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
-	  
-	  <h3>Détails du backlog</h3>
-			
-	  <div class="table-responsive">
-	  <table  class="table-bordered">
-		<tr>
-			<td><span style="font-size:20px;">Description</span></td>
-			<td><span style="font-size:20px;">Priorite</span></td>
-			<td><span style="font-size:20px;">Difficulte</span></td>
-			<td><span style="font-size:20px;">Options</span></td>
-		</tr>
-		<tr ng-repeat="us in userStories">
-		<span style="font-size:20px;">
-		  <td>{{us.body}}</td>
-		  <td>{{us.priority}}</td>
-		  <td>{{us.difficulty}}</td>
-		  <td>
-		  
-		  <button class="btn btn-danger" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>  
-		  <button class="btn btn-warning" ng-click="editUserStory(us)">Modifier</button>
-		  
-		  </td>
-		</span>
-		</tr>
-	  </table>
-	  </div>
-	  
-		<h3>Ajouter/Editer une User Story</h3>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a id="aHome" href="#/home">Home</a></li>
+                    <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+                    <li><a id="aCommit" href="#/commits/{{backlogId}}">Commits</a></li>
+                    <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+                    <li><a id="aUser" href="#/users/{{backlogId}}">Développeurs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-		<div class="form-group">
-		  <input type="text"
-			  class="form-control"
-			  placeholder="Description"
-			  ng-model="body">
-		  </input>
-		  <br>
-		  <label for="sel1">Priorite:</label>
-		  <input type="text"
-			  ng-pattern="/^[0-9]+$/"
-			  class="form-control"
-			  ng-model="priority">
-		  </input>
-		  <br>
-		  <label for="sel1">Difficulte:</label>
-		  <select class="form-control" ng-model="difficulty">
-			  <option>2</option>
-			  <option>3</option>
-			  <option>5</option>
-			  <option>8</option>
-			  <option>13</option>
-			  <option>21</option>
-			</select>
-		  <div class="form-group">
-				<input type="hidden"z
-					class="form-control"
-					placeholder="Id"
-					ng-model="id">
-				</input>
-		  </div>
-		</div>
-		<button class="btn btn-primary" ng-click="addUserStory()">Ajouter</button>
-		<button class="btn btn-info" ng-click="updateUserStory(us._id)">Editer</button> 
+    <div ng-hide="editer">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Détails du backlog
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Priorite</th>
+                                <th>Difficulte</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="us in userStories">
+                                <td>{{us.body}}</td>
+                                <td>{{us.priority}}</td>
+                                <td>{{us.difficulty}}</td>
+                                <td>
+                                    <a class="testDetail" href="#/taches/{{us._id}}/{{us.backlog}}">
+                                        <button class="btn btn-primary btn-detail">Taches</button>
+                                    </a>
+                                    <button class="btn btn-danger btn-delete" ng-click="deleteUserStory(us._id, us.backlog)">Supprimer</button>
+                                    <button class="btn btn-warning btn-edit" ng-click="editUserStory(us)">Modifier</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <button id="btn-addUS" class="btn btn-primary" ng-click="nouveau()">Nouveau</button>
+        </br>
+    </div>
+
+    <div class="panel panel-default" ng-show="editer">
+        <div class="panel-heading">
+            Ajouter/Editer une User Story
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Description" ng-model="body">
+                            </input>
+                            <br>
+                            <label for="sel1">Priorite:</label>
+                            <input type="text" ng-pattern="/^[0-9]+$/" class="form-control" ng-model="priority">
+                            </input>
+                            <br>
+                            <label for="sel1">Difficulte:</label>
+                            <select class="form-control" ng-model="difficulty">
+                                <option>2</option>
+                                <option>3</option>
+                                <option>5</option>
+                                <option>8</option>
+                                <option>13</option>
+                                <option>21</option>
+                            </select>
+                            <div class="form-group">
+                                <input type="hidden" z class="form-control" placeholder="Id" ng-model="id">
+                                </input>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" z class="form-control" placeholder="IdSprint" ng-model="idSprint">
+                                </input>
+                            </div>
+                        </div>
+                        <button id="BtnAddUserstory" class="btn btn-primary" ng-click="addUserStory()">Ajouter</button>
+                        <button id="BtnEditUserstory" class="btn btn-info" ng-click="updateUserStory(us._id)">Editer</button>
+                        <a class="testDetail" href="#/userStories/{{backlog._id}}">
+                            <button id="btn-cancelled" class="btn btn-warning" ng-click="annuler()">Annuler</button>
+                        </a>
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+            <!-- /.row (nested) -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
 
 </section>

@@ -1,0 +1,82 @@
+<section>   
+          <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div>
+                  <ul class="nav navbar-nav">
+                    <li><a id="aHome" href="#/home">Home</a></li>
+                    <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+                    <li><a id="aCommit" href="#/commits/{{backlogId}}">Commits</a></li>
+                    <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+                    <li><a id="aUser" href="#/users/{{backlogId}}">Développeurs</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>    
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Kanban</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            To Do
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="alert alert-warning" ng-repeat="tache in taches" ng-if="(tache.etat==0)">
+                                {{tache.description}}.
+                                <button type="button" class="btn btn-outline btn-info" ng-click="changeEtat(tache,1)">Doing
+                                </button>
+                            </div>
+
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Doing
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                      
+                            <div class="alert alert-info alert-dismissable" ng-repeat="tache in taches" ng-if="(tache.etat==1)">
+                                {{tache.description}}.
+                                <button type="button" class="btn btn-outline btn-success" ng-click="changeEtat(tache,2)">Done
+                                </button>
+                            </div>
+
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Done
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="alert alert-success alert-dismissable" ng-repeat="tache in taches" 
+                            ng-if="(tache.etat==2)">
+                                {{tache.description}}.
+                                <button type="button" class="btn btn-outline btn-info" ng-click="changeEtat(tache,1)">Doing
+                                </button>
+                            </div>
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>                
+            </div>  
+
+</section>

@@ -1,0 +1,136 @@
+<section>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a id="aHome" href="#/home">Home</a></li>
+                    <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+                    <li><a id="aCommit" href="#/commits/{{backlogId}}">Commits</a></li>
+                    <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+                    <li><a id="aUser" href="#/users/{{backlogId}}">Développeurs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-hide="editer">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Taches
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Description</th>
+                                <th>Durée</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tache in taches">
+                                <td>{{tache.numero}}</td>
+                                <td>{{tache.description}}</td>
+                                <td>{{tache.dure}}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-edit" data-ng-click="edit(tache);">Modifier</button>
+                                    <button class="btn btn-danger btn-delete" data-ng-click="delete(tache);">Supprimer</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <a href="#/taches/create/{{usId}}/{{backlogId}}">
+            <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Nouveau</button>
+            </br>
+        </a>
+    </div>
+
+    <div class="panel panel-default" ng-show="editer">
+        <div class="panel-heading">
+            Tache
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form role="form">
+
+                        <div>
+                            <label for="Numero">Numéro:</label>
+                            <div>
+                                <input class="form-control" type="text" data-ng-model="tache.numero" id="numero" placeholder="Numero" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="description">Description:</label>
+                            <div>
+                                <textarea class="form-control" data-ng-model="tache.description" id="description" cols="80" rows="10" placeholder="Description">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="dure">Durée:</label>
+                            <div>
+                                <input class="form-control" type="text" data-ng-model="tache.dure" id="dure" placeholder="Duree" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="dure">Délai plus tôt:</label>
+                            <div>
+                                <input class="form-control" type="text" data-ng-model="tache.delaiplustot" id="delaiplustot" placeholder="Delai plus tot">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="dure">Délai plus tard:</label>
+                            <div>
+                                <input class="form-control" type="text" data-ng-model="tache.delaiplustard" id="delaiplustard" placeholder="Delai plus tard">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="Etat">Etat:</label>
+                            <div>
+                                <select class="form-control" data-ng-model="tache.etat" id="etat" placeholder="Etat" required>
+                                    <option value="0">To Do</option>
+                                    <option value="1">Doing</option>
+                                    <option value="2">Done</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="sel1">Dépendances (maintenir Ctrl pour selectionner plusieurs tâches) :</label>
+                                <select id="tacheId" multiple ng-model="tache.tacheId" class="form-control">
+                                    <option ng-repeat="t in taches" value="{{t._id}}" ng-if="(tache._id!=t._id)">N° {{t.numero}} - {{t.description}}</option>
+                                </select>
+                                <br>
+
+                            </div>
+                        </div>
+                        </br>
+                        <div>
+                            <button id="btn-update" class="btn btn-primary" ng-click="update(tache._id,tache)">Mise à jour</button>
+                            <a class="testDetail" href="#/taches/{{tache.usId}}/{{backlogId}}">
+                                <button id="btn-cancelledEdit" class="btn btn-warning" ng-click="annuler()">Annuler</button>
+                            </a>
+                        </div>
+                        <!-- El elemento mensaje de error -->
+                        <div data-ng-show="error">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+            <!-- /.row (nested) -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+</section>

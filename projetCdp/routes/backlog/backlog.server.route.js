@@ -44,12 +44,13 @@ router.get('/backlogs/:backlog', function(req, res) {
 
 //update one backlog with associated US
 router.put('/backlogs/:backlog', function(req, res) {
-	var title = req.body.title;
-	var description = req.body.description;
+  var title = req.body.title;
+  var description = req.body.description;
+  var gitlink = req.body.gitlink;
   
   var query = {"_id":req.backlog._id};
-  Backlog.findOneAndUpdate(query, {title: title, description: description}, { 'new': true }, function(doc) {
-		res.json(doc);
+  Backlog.findOneAndUpdate(query, {title: title, description: description, gitlink: gitlink}, { 'new': true }, function(doc) {
+    res.json(doc);
   });
 });
 

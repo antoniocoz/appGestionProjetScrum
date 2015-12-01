@@ -1,0 +1,111 @@
+<section>
+	  
+	  <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+  			<div>
+            <ul class="nav navbar-nav">
+              <li><a id="aHome" href="#/home">Home</a></li>
+              <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+              <li><a id="aCommit" href="#/commits/{{backlogId}}">Commits</a></li>
+              <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+              <li><a id="aUser" href="#/users/{{backlogId}}">Développeurs</a></li>
+            </ul>
+  			</div>
+		  </div>
+		</nav>
+          <div class="panel panel-default">
+
+              <div class="panel-heading">
+	  			      Répartition des tâches
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">   
+
+                  <div class="table-responsive table-bordered">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Prenom</th>
+                                  <th>Nom</th>
+                                  <th>Contact</th>
+                                  <th>Options</th>
+                                  <th>Tâches</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                  <tr ng-repeat="user in users">
+                                  <td>{{user.forename}}</td>
+                                  <td>{{user.surname}}</td>
+                                  <td>{{user.contact}}</td>
+                                  <td><button class="btn btn-primary btn-addUS" ng-click="showFormUs(user)"><span class="glyphicon glyphicon-plus"></span></button></td>
+                                  <td>
+                                      <table   class="table table-responsive table-bordered">
+                      <thead>
+                      <tr>
+                      <th>Description</th>
+                      <th>Durée</th>
+                      <th>Options</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  ng-repeat="t in tasks | orderBy:'-priority'" ng-if='t.userId==user._id'>
+                        <td>{{t.description}}</td>
+                        <td>{{t.dure}}</td>
+                        <td>
+                          <div class="btn-group" style="width: 120px">
+                            <button type="button" class="btn btn-success" ng-click="upPriority(t, user._id)">
+                              <span class="glyphicon glyphicon-chevron-up"></span>
+                           </button>
+                           <button type="button" class="btn btn-danger" ng-click="downPriority(t)">
+                              <span class="glyphicon glyphicon-chevron-down"></span>
+                           </button>
+                           <button type="button" class="btn btn-danger" ng-click="deleteTask(t._id)">
+                              <span class="glyphicon glyphicon-remove"></span>
+                           </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                      </table>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  </br>
+                  <!-- /.table-responsive -->
+                  <div>
+                  <a href="#/gantts/{{sprintId}}/{{backlogId}}">
+                    <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Diagramme</button>
+                  </a>
+                  </div>
+              </div>
+              <!-- /.panel-body -->
+          </div>
+
+          <div class="panel panel-default" ng-show="addUserStory">
+                    <div class="panel-heading">
+                        Ajouter une tâche au développeur
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <form role="form">
+                                    <label for="sel1">Tâches :</label>
+                                    <select ng-model="task">
+                                      <option ng-repeat="task in tasks" value="{{task._id}}"> {{task.description}}, durée : {{task.dure}}</option>
+                                    </select>
+                                    <br>
+                                    <button id="btn-addUSclick" class="btn btn-primary" ng-click="editTask(task, idUser)">Ajouter</button>
+                                    <a class="testDetail" href="#/gantts/{{sprintId}}/{{backlogId}}">
+                                        <button id="btn-cancelledAddUs" class="btn btn-warning" ng-click="cancel()">Annuler</button>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    <!-- /.panel -->
+
+</section>

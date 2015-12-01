@@ -1,0 +1,34 @@
+L'intégralité du travail à réaliser est découpée en incréments fonctionnels
+et les activités de développement s'organisent autour de ces incréments appelés "User Stories".
+
+**Lister les user stories**
+
+Pour accéder aux user stories d'un backlog, il faut cliquer sur son bouton détail.
+(Il faut au préalable avoir créé un backog)
+
+Cela redirige sur une nouvelle page qui liste les user stories présentes de ce 
+backlog.
+
+**Ajouter une user story**
+
+Pour ajouter une user story, il faut cliquer sur nouveau puis remplir tout 
+les champs du formulaire et cliquer sur ajouter.
+
+Elle sera automatiquement ajouter à la liste des user stories.
+
+**Editer une user story**
+
+Pour éditer une user story, il faut cliquer sur le bouton modifier dans 
+la colonne options de cette user story.
+
+Ensuite, changer les valeurs que vous voulez dans le formulaire et enfin
+cliquer sur le bouton editer.
+
+La modification sera automatiquement changer dans la liste des user stories.
+
+**Supprimer une user story**
+
+Pour supprimer une user story, il faut cliquer sur le bouton supprimer dans 
+la colonne options de cette user story.
+
+Elle sera automatiquement supprimer de la liste des user stories.

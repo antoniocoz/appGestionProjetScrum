@@ -1,0 +1,62 @@
+<section>
+	  
+	  <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div>
+          <ul class="nav navbar-nav">
+              <li><a id="aHome" href="#/home">Home</a></li>
+              <li><a id="aUS" href="#/userStories/{{backlogId}}">User Stories</a></li>
+              <li><a id="aCommit" href="#/commits/{{backlogId}}">Commits</a></li>
+              <li><a id="aSprint" href="#/sprints/{{backlogId}}">Sprints</a></li>
+              <li><a id="aUser" href="#/users/{{backlogId}}">Développeurs</a></li>
+          </ul>
+			</div>
+		  </div>
+		</nav>
+          <div class="panel panel-default">
+
+              <div class="panel-heading">
+	  			Développeurs, tâches et diagramme de GANTT
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+
+
+              		<div>
+              			<div ng-show="filled" google-chart chart="chart" style="{{chart.cssStyle}}"/>
+              		</div>
+                  <div ng-show="empty"> <p>Le diagramme de Gantt n'a pas été encore configuré</p></div>
+                  <!-- /.table-responsive -->
+
+                  <div>
+                  <a href="#/gantts/edit/{{sprintId}}/{{backlogId}}">
+                    <button id="btn-add" class="btn btn-primary" ng-click="nouveau()">Créer/Modifier le Gantt</button>
+                 </a>
+                 </div>
+               </br>
+                  <div class="table-responsive table-bordered">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Numéro</th>
+                                  <th>Description</th>
+                                  <th>Durée</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                  <tr ng-repeat="t in tasks">
+                                  <td>{{t.numero}}</td>
+                                  <td>{{t.description}}</td>
+                                  <td>{{t.dure}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+
+              </div>
+              <!-- /.panel-body -->
+          </div>
+
+    <!-- /.panel --> 
+
+</section>
